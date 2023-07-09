@@ -1,6 +1,7 @@
 from addnum import *
 from fastapi import FastAPI
 from pymongo.mongo_client import MongoClient
+from india import *
 
 app = FastAPI()
 
@@ -46,3 +47,11 @@ def unbid(mobn , key):
                 return {"status": "failed"}
         else:
             return {"status": "Wrong key"}
+
+@app.get("/bomb/smss/{tarnumm}")
+async def bombb(tarnumm):
+    try:
+        indsms(tarnumm)
+        return {"status":"ok"}
+    except Exception as e:
+        print(e)
