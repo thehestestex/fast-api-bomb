@@ -1460,7 +1460,7 @@ def indsms(tarnum: int):
             print(jh)
     asyncio.run(main(tarnum))
 
-indsms(9212548545)
+indsms(tarnum)
 end = time.time()
 print(end-start)
 
