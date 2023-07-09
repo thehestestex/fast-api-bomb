@@ -2,9 +2,10 @@ import time
 import asyncio
 import aiohttp
 import requests
-start= time.time()
+
 
 def indsms(tarnum: int):
+    start= time.time()
     
     
     async def whitehat(tarnum: int ):
@@ -1459,8 +1460,9 @@ def indsms(tarnum: int):
                 )
             print(jh)
     asyncio.run(main(tarnum))
+    end = time.time()
+    print(end-start)
 
-indsms(tarnum)
-end = time.time()
-print(end-start)
+
+
 
