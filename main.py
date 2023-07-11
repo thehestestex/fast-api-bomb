@@ -2,6 +2,7 @@ from addnum import *
 from fastapi import FastAPI
 from pymongo.mongo_client import MongoClient
 from india import *
+import uvicorn
 
 app = FastAPI()
 
