@@ -4,7 +4,7 @@ import aiohttp
 import requests
 start= time.time()
 
-def indsms(tarnum: int):
+await def indsms(tarnum: int):
     
     
     async def whitehat(tarnum: int ):
