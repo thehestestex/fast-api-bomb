@@ -1,5 +1,5 @@
 from addnum import *
-from fastapi import FastAPI
+from fastapi import FastAPI , Request
 from pymongo.mongo_client import MongoClient
 from india import *
 import uvicorn
@@ -94,3 +94,10 @@ async def bombb(tarnumm):
         return {"status":"ok"}
     except Exception as e:
         print(e)
+        
+@app.get("/")
+def read_root( request: Request):
+    item_id="njn"
+    client_host = request.client.host
+    print(client_host)
+    return {"item_id": item_id}
