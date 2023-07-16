@@ -1056,17 +1056,17 @@ async def indsms(tarnum: int):
     async def main(tarnum):
         print("here")
 
-        for i in range(2):
+        for i in range(1):
             jh = await asyncio.gather(
                 whitehat(tarnum),
                 moglix(tarnum),
                 medibuddy(tarnum),
                 gopaysense(tarnum),
-                rapido(tarnum),
-                dunzo(tarnum),
-                byjus(tarnum),
-                ballebazi(tarnum),
-                zee5(tarnum),
+                # rapido(tarnum),
+                # dunzo(tarnum),
+                # byjus(tarnum),
+                # ballebazi(tarnum),
+                # zee5(tarnum),
                 # doubtnut(tarnum),
                 # vedantu(tarnum),
                 # upgrade(tarnum),
