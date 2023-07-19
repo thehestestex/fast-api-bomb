@@ -95,8 +95,8 @@ async def unbid(mobn , key):
             return {"status": "Wrong key"}
 
 @app.get("/bomber/sms/{coun}/{tarnumm}/{key}")
-async def bombb( coun , tarnumm , key):
-    ip="154.25.625.85"
+async def bombb( request: Request , coun , tarnumm , key):
+    ip = request.client.host
     try:
         sk = await loo(ip)
         skey = sk['sec']
