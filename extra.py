@@ -75,7 +75,7 @@ async def keyip(ip  , nno , key):
         else:
             return {"status": "ok"}
     except Exception as e:
-        return "failed"
+        return {"status": "failed"}
 
 async def checkacckey(keys , ip , name):
     try:
@@ -90,7 +90,7 @@ async def checkacckey(keys , ip , name):
             kk = await inner(ip ,name)
             return kk
     except Exception as e:
-        return {"status": "failed to login"}
+        return {"status": "failed"}
 
 
 async def inner(ip , name):
@@ -98,11 +98,11 @@ async def inner(ip , name):
     if chec=="no":
         newl = await newlogin(ip , name)
         if "ok"==newl['status']:
-            return {"status": "ok" , "key": newl['key']}
+            return {"status": "key" , "key": newl['key']}
         else:
             return {"status": "failed"}
     else:
-        return {"key": chec['sec']}
+        return {"status": "key" , "key": chec['sec']}
 
 async def afterlog(ip , keyss):
     try:
