@@ -1,4 +1,6 @@
 from pymongo.mongo_client import MongoClient
+import random
+import string
 import asyncio
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
 
@@ -26,4 +28,12 @@ async def passret(mobn):
         pas = conn.masbom.protect.find_one({"mob": mobn} , {'password': 1 , '_id': 0})
         return pas['password']
     except Exception as e:
-         return "server error"
+        return "server error"
+
+async def randomv():
+    try:
+        letters = string.ascii_lowercase
+        result_str = ''.join(random.choice(letters) for i in range(10))
+        print(result_str)
+    except Exception as e:
+        print(e)
