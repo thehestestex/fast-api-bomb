@@ -144,6 +144,8 @@ async def loginn(request: Request , keyss):
             return {"status": "ok"}
         else:
             return {"status": "failed"}
+    else:
+        return log
 
 @app.get("/firstlogin/")
 async def firstlogin(request: Request , name , keys):
