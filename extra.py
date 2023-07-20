@@ -24,7 +24,7 @@ async def loo(ip):
         for x in range (1 , int(no)):
             ipp = i[f'ip{x}']
             if ip == ipp:
-                return {"sec": i['key'] , "no": i['no']}
+                return {"status": "key" , "sec": i['key'] , "no": i['no']}
     return "no"
 
 
