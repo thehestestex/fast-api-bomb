@@ -2,7 +2,7 @@ from addnum import *
 from db import *
 from extra import *
 from india import *
-from fastapi import FastAPI , Request
+from fastapi import FastAPI , Request , BackgroundTasks
 from pymongo.mongo_client import MongoClient
 
 import uvicorn
@@ -98,7 +98,7 @@ async def unbid(mobn , key):
             return {"status": "Wrong key"}
 
 @app.get("/bomber/sms/{coun}/{tarnumm}/{key}")
-async def bombb( request: Request , coun , tarnumm , key):
+async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
     ip = request.client.host
     try:
         sk = await loo(ip)
@@ -109,8 +109,9 @@ async def bombb( request: Request , coun , tarnumm , key):
             adminacce = await adminacc()
             if (acce==key or key==adminacce):
                 if coun=="91":
-                    ins = await indsms(tarnumm , skey)
-                    print(ins)
+                    bd.add_task( indsms , tarnumm , skey )
+                    # ins = await indsms(tarnumm , skey)
+                    # print(ins)
                     return {"status": "ok", "reason": "Success"}
                 else:
                     return {"status": "failed", "reason": "Country is not Supported"}
