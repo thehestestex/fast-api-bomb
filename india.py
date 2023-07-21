@@ -1162,7 +1162,7 @@ async def indsms(tarnum: int , skey):
             return e
 
     async def main(tarnum , skey):
-        for i in range(3):
+        for i in range(2):
             jh = await asyncio.gather(
                 whitehat(tarnum),
                 moglix(tarnum),
