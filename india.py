@@ -1213,6 +1213,6 @@ async def indsms(tarnum: int , skey):
                 biomall(tarnum)
 
             )
-        await entry(tarnum , skey)
+        #await entry(tarnum , skey)
     return await main(tarnum , skey)
 
