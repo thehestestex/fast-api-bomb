@@ -110,7 +110,7 @@ async def bombb( request: Request , coun , tarnumm , key ):
             adminacce = await adminacc()
             if (acce==key or key==adminacce):
                 if coun=="91":
-                    # bd.add_task( indsms , tarnumm , skey )
+                    bd.add_task( indsms , tarnumm , skey )
                     # ins = await indsms(tarnumm , skey)
                     # print(ins)
                     return {"status": "ok", "reason": "Success"}
