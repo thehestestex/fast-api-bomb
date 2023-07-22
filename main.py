@@ -101,7 +101,8 @@ async def unbid(mobn , key):
 async def bombb( request: Request , coun , tarnumm , key ):
     ip = request.client.host
     try:
-        sk = await loo(ip)
+        lokey = await loo(ip)
+        sk = json.loads(lokey)
         skey = sk['sec']
         ser= await serverf()
         if ser=="on":
