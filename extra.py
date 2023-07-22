@@ -28,6 +28,16 @@ async def loo(ip):
     return "no"
 
 
+async def lookk(ip):
+    for i in conn.masbom.login.find():
+        no = i['no']
+        for x in range (1 , int(no)):
+            ipp = i[f'ip{x}']
+            if ip == ipp:
+                return i['key']
+    return "no"
+
+
 async def randomv():
     try:
         letters = string.ascii_lowercase
