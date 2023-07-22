@@ -102,7 +102,8 @@ async def bombb( request: Request , coun , tarnumm , key ):
     ip = request.client.host
     try:
         k = await loo(ip)
-        sk = json.loads(k)
+        with k as f:
+        sk = json.loads(f)
         print(type(sk))
         skey = sk['sec']
         ser= await serverf()
