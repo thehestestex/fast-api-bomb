@@ -100,13 +100,10 @@ async def unbid(mobn , key):
 async def bombb( request: Request , coun , tarnumm , key ):
     ip = request.client.host
     try:
-        print("3")
         sk = await loo(ip)
-        print("2")
-        # skey = sk['sec']
-        print("1")
+        print(type(sk))
+        skey = sk['sec']
         ser= await serverf()
-        print("4")
         if ser=="on":
             acce= await accessk()
             adminacce = await adminacc()
