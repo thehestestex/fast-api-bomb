@@ -103,7 +103,7 @@ async def bombb( request: Request , coun , tarnumm , key ):
         print("3")
         sk = await loo(ip)
         print("2")
-        skey = sk['sec']
+        # skey = sk['sec']
         print("1")
         ser= await serverf()
         print("4")
