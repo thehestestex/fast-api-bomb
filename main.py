@@ -120,6 +120,7 @@ async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
         else:
             return {"status": "failed" , "reason": "server off"}
     except Exception as e:
+        print(e)
         return {"status": "failed" , "reason": "Internal server error"}
 @app.get("/starr/")
 async def star(key: str , code: str):
