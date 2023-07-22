@@ -98,7 +98,7 @@ async def unbid(mobn , key):
             return {"status": "Wrong key"}
 
 @app.get("/bomber/sms/{coun}/{tarnumm}/{key}")
-async def bombb( request: Request , coun , tarnumm , key ):
+async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
     ip = request.client.host
     try:
         skey= await lookk(ip)
