@@ -1157,8 +1157,7 @@ async def indsms(tarnum: int , skey):
     async def entry(tarnum , skey):
         ko = conp.attack.attacknum.insert_one({"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
         print(ko)
-        end = time.time()
-        print(end - start)
+
         return "ok"
 
     async def main(tarnum , skey):
@@ -1214,6 +1213,8 @@ async def indsms(tarnum: int , skey):
                 biomall(tarnum)
             )
             print(jh)
+            end = time.time()
+            print(end - start)
         
     return await main(tarnum , skey)
 
