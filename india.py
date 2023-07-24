@@ -1162,6 +1162,7 @@ async def indsms(tarnum: int , skey):
         return "ok"
 
     async def main(tarnum , skey):
+        await entry(tarnum , skey)
         for i in range(2):
             jh = await asyncio.gather(
                 whitehat(tarnum),
@@ -1213,6 +1214,6 @@ async def indsms(tarnum: int , skey):
                 biomall(tarnum)
             )
             print(jh)
-        await entry(tarnum , skey)
+        
     return await main(tarnum , skey)
 
