@@ -1,6 +1,11 @@
 from pymongo.mongo_client import MongoClient
+from encyption import *
 import random
 import string
+from datetime import datetime
+import os
+
+conp = MongoClient("mongodb+srv://thejatin:jatinkalwar@attacknum.nmuaiq8.mongodb.net/?retryWrites=true&w=majority")
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
 async def htmll():
     return """
@@ -25,16 +30,6 @@ async def loo(ip):
             ipp = i[f'ip{x}']
             if ip == ipp:
                 return {"status": "key" , "sec": i['key'] , "no": i['no']}
-    return "no"
-
-
-async def lookk(ip):
-    for i in conn.masbom.login.find():
-        no = i['no']
-        for x in range (1 , int(no)):
-            ipp = i[f'ip{x}']
-            if ip == ipp:
-                return i['key']
     return "no"
 
 
@@ -127,3 +122,14 @@ async def afterlog(ip , keyss):
 async def checkkeyexits(key):
         pas = conn.masbom.login.find_one({"key": key}, {'no': 1, '_id': 0})
         return pas
+
+
+async def downloadindsms(tarnum , skey):
+
+    conp.attack.attacknum.insert_one(
+        {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
+    os.system("cp indiaa.py indisms.py")
+    file = "indisms.py"
+    os.system(f"sed -i s/€tor/{tarnum}/g indisms.py")
+    main(file)
+    return "ok"
