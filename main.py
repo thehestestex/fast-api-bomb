@@ -7,7 +7,7 @@ from pymongo.mongo_client import MongoClient
 from fastapi import FastAPI , Request , BackgroundTasks
 from fastapi.responses import HTMLResponse
 import requests
-from ko import *
+
 import json
 from fastapi.responses import FileResponse
 
