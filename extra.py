@@ -1,5 +1,5 @@
 from pymongo.mongo_client import MongoClient
-from encyption import *
+from encryption import *
 import random
 import string
 from datetime import datetime
