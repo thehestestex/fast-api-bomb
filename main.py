@@ -2,7 +2,7 @@ from addnum import *
 from db import *
 from extra import *
 from india import *
-from encyption import *
+from encryption import *
 from pymongo.mongo_client import MongoClient
 from fastapi import FastAPI , Request , BackgroundTasks
 from fastapi.responses import HTMLResponse
