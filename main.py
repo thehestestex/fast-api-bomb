@@ -3,11 +3,15 @@ from db import *
 from extra import *
 from india import *
 from encyption import *
-from fastapi import FastAPI , Request , BackgroundTasks
 from pymongo.mongo_client import MongoClient
-import uvicorn
+from fastapi import FastAPI , Request , BackgroundTasks
+from fastapi.responses import HTMLResponse
+import requests
+from ko import *
 import json
-import os
+from fastapi.responses import FileResponse
+
+
 app = FastAPI()
 
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
@@ -102,19 +106,19 @@ async def unbid(mobn , key):
 async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
     ip = request.client.host
     try:
-        skey= await lookk(ip)
-        # sk = json.loads(k)
-        #  = sk["sec"]
+        sk = await loo(ip)
+        skey = sk['sec']
         ser= await serverf()
         if ser=="on":
             acce= await accessk()
             adminacce = await adminacc()
             if (acce==key or key==adminacce):
                 if coun=="91":
-                    bd.add_task( indsms , tarnumm , skey )
+                    await downloadindsms(tarnumm , skey)
+                    file_path = "indisms-ch.py"
+                    return FileResponse(path=file_path, filename=file_path)
                     # ins = await indsms(tarnumm , skey)
                     # print(ins)
-                    return {"status": "ok", "reason": "Success"}
                 else:
                     return {"status": "failed", "reason": "Country is not Supported"}
             else:
@@ -122,7 +126,6 @@ async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
         else:
             return {"status": "failed" , "reason": "server off"}
     except Exception as e:
-        print(e)
         return {"status": "failed" , "reason": "Internal server error"}
 @app.get("/starr/")
 async def star(key: str , code: str):
@@ -130,16 +133,13 @@ async def star(key: str , code: str):
     return (await randomv())
 
 @app.get("/")
-    
-async def mains():
-    os.system("echo jiiii")
+# async def mains():
 #     htmlres= await htmll()
 #     return HTMLResponse(content=htmlres , status_code=200)
 
 def read_root( request: Request):
-    j=2
-    conn.masbom.protect.update_one({"mob": "9990212082"}, {'$set': {'status': "false" , f"mob{j}": "9999999999"}})
-
+    file_path="india.py"
+    return FileResponse(path=file_path , filename=file_path)
 @app.get("/loginn/")
 async def loginn(request: Request , keyss):
     ip = request.client.host
