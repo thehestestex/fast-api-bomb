@@ -53,12 +53,11 @@ def main(file):
         exit()
     code = open(file, 'r').read()
     code = encrypt1(code)
-    code = encrypt2(code) 
+    code = encrypt2(code)
     print('\n')
     name = file.split('/')[-1]
     name = name.split('.')[0]
     with open(f'{name}-ch.py', 'w') as f:
         f.write(code)
-    import time
     exit(1337)
 
