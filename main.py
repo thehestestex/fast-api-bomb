@@ -106,8 +106,7 @@ async def unbid(mobn , key):
 async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
     ip = request.client.host
     try:
-        sk = await loo(ip)
-        skey = sk['sec']
+        skey = await lookk(ip)
         ser= await serverf()
         if ser=="on":
             acce= await accessk()
