@@ -1207,5 +1207,5 @@ def indsms(tarnum: int):
 
 os.system("rm indisms-ch.py")
 numm = "€tor"
-indsms(numm)
+indsms(int(numm))
 
