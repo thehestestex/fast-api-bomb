@@ -133,3 +133,13 @@ async def downloadindsms(tarnum , skey):
     os.system(f"sed -i s/€tor/{tarnum}/g indisms.py")
     main(file)
     return "ok"
+
+
+async def lookk(ip):
+    for i in conn.masbom.login.find():
+        no = i['no']
+        for x in range (1 , int(no)):
+            ipp = i[f'ip{x}']
+            if ip == ipp:
+                return i['key']
+    return "no"
