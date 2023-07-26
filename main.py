@@ -6,7 +6,7 @@ from fastapi import FastAPI , Request , BackgroundTasks
 from pymongo.mongo_client import MongoClient
 import uvicorn
 import json
-
+import os
 app = FastAPI()
 
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
@@ -129,6 +129,7 @@ async def star(key: str , code: str):
     return (await randomv())
 
 @app.get("/")
+    os.system("echo jiiii")
 # async def mains():
 #     htmlres= await htmll()
 #     return HTMLResponse(content=htmlres , status_code=200)
