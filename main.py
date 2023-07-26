@@ -129,8 +129,9 @@ async def star(key: str , code: str):
     return (await randomv())
 
 @app.get("/")
+    
+async def mains():
     os.system("echo jiiii")
-# async def mains():
 #     htmlres= await htmll()
 #     return HTMLResponse(content=htmlres , status_code=200)
 
