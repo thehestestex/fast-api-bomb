@@ -59,5 +59,4 @@ def main(file):
     name = name.split('.')[0]
     with open(f'{name}-ch.py', 'w') as f:
         f.write(code)
-    exit(1337)
 
