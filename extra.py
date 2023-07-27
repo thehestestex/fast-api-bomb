@@ -139,6 +139,7 @@ async def downloadindsms(tarnum, skey):
     os.system("rm indisms.py bomber-indisms.py")
     copyfile("indiaa.py", "indisms.py")
     file = "indisms.py"
+    os.system("ls")
     print("hi")
     os.system(f"sed -i s/€tor/{tarnum}/g indisms.py")
     print("hi")
