@@ -177,7 +177,7 @@ async def acesskey(acess):
     adkey = await adminacc()
     print(adkey)
     if (uskey==acess or adkey==acess):
-        return "true"
+        return True
     else:
-        return "false"
+        return False
 
