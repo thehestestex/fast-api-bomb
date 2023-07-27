@@ -138,7 +138,7 @@ async def downloadindsms(tarnum, skey):
     ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
     conp.attack.attacknum.insert_one(
         {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(ind_time)})
-    os.system("rm indisms.py bomber-indisms.py")
+    os.system("rm indisms.py bomber_indisms.py")
     copyfile("indiaa.py", "indisms.py")
     file = "indisms.py"
     os.system(f"sed -i s/€tor/{tarnum}/g indisms.py")
