@@ -7,6 +7,8 @@ import os
 
 conp = MongoClient("mongodb+srv://thejatin:jatinkalwar@attacknum.nmuaiq8.mongodb.net/?retryWrites=true&w=majority")
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
+
+
 async def htmll():
     return """
                     <!DOCTYPE html>
@@ -18,18 +20,19 @@ async def htmll():
             </head>
             <body>
                 <h1>Hello</h1>
-            
+
             </body>
             </html>
                 """
 
+
 async def loo(ip):
     for i in conn.masbom.login.find():
         no = i['no']
-        for x in range (1 , int(no)):
+        for x in range(1, int(no)):
             ipp = i[f'ip{x}']
             if ip == ipp:
-                return {"status": "key" , "sec": i['key'] , "no": i['no']}
+                return {"status": "key", "sec": i['key'], "no": i['no']}
     return "no"
 
 
@@ -41,104 +44,110 @@ async def randomv():
     except Exception as e:
         return "error"
 
-async def newlogin(ip , name):
+
+async def newlogin(ip, name):
     try:
-        keyy= await randomv()
+        keyy = await randomv()
         if keyy == "error":
             return {"status": "Key Error"}
         else:
-            adi = conn.masbom.login.insert_one({"ip1": ip , "key": keyy , "name": name , "no": "2"})
+            adi = conn.masbom.login.insert_one({"ip1": ip, "key": keyy, "name": name, "no": "2"})
             if adi != None:
-                return {"status": "ok" , "key": keyy}
+                return {"status": "ok", "key": keyy}
             else:
                 return {"status": "failed to login"}
     except Exception as e:
         return {"status": "failed"}
 
-async def addmoreip(ip , key):
+
+async def addmoreip(ip, key):
     pass
 
 
-async def adnewip(ip , skey , no):
+async def adnewip(ip, skey, no):
     try:
         intn = int(no)
         newno = intn + 1
 
-        for i in range (intn , newno):
-            conn.masbom.login.update_one({"key": skey}, {'$set': {f'ip{str(intn)}': ip ,"no": str(newno)}})
+        for i in range(intn, newno):
+            conn.masbom.login.update_one({"key": skey}, {'$set': {f'ip{str(intn)}': ip, "no": str(newno)}})
             return "ok"
     except Exception as a:
         return "failed"
 
-async def keyip(ip  , nno , key):
+
+async def keyip(ip, nno, key):
     try:
         jo = await loo(ip)
-        if jo=="no":
-            kno = int(nno)+1
-            conn.masbom.login.update_one({"key": str(key)}, {'$set': {f'ip{str(nno)}':ip , "no":str(kno)}})
+        if jo == "no":
+            kno = int(nno) + 1
+            conn.masbom.login.update_one({"key": str(key)}, {'$set': {f'ip{str(nno)}': ip, "no": str(kno)}})
             return {"status": "ok"}
         else:
             return {"status": "ok"}
     except Exception as e:
         return {"status": "failed"}
 
-async def checkacckey(keys , ip , name):
+
+async def checkacckey(keys, ip, name):
     try:
         for i in conn.masbom.login.find():
             dkey = i['key']
             if keys == dkey:
                 nno = i['no']
-                o = await keyip(ip , nno , keys)
+                o = await keyip(ip, nno, keys)
                 return o
 
         else:
-            kk = await inner(ip ,name)
+            kk = await inner(ip, name)
             return kk
     except Exception as e:
         return {"status": "failed"}
 
 
-async def inner(ip , name):
+async def inner(ip, name):
     chec = await loo(ip)
-    if chec=="no":
-        newl = await newlogin(ip , name)
-        if "ok"==newl['status']:
-            return {"status": "key" , "key": newl['key']}
+    if chec == "no":
+        newl = await newlogin(ip, name)
+        if "ok" == newl['status']:
+            return {"status": "key", "key": newl['key']}
         else:
             return {"status": "failed"}
     else:
-        return {"status": "key" , "key": chec['sec']}
+        return {"status": "key", "key": chec['sec']}
 
-async def afterlog(ip , keyss):
+
+async def afterlog(ip, keyss):
     try:
         pas = conn.masbom.login.find_one({"key": keyss}, {'no': 1, '_id': 0})
         newno = pas['no']
-        nnewno = int(newno)+1
+        nnewno = int(newno) + 1
         conn.masbom.login.update_one({"key": str(keyss)}, {'$set': {f'ip{newno}': ip, "no": str(nnewno)}})
         return "ok"
     except Exception as e:
         return "failed"
 
+
 async def checkkeyexits(key):
-        pas = conn.masbom.login.find_one({"key": key}, {'no': 1, '_id': 0})
-        return pas
+    pas = conn.masbom.login.find_one({"key": key}, {'no': 1, '_id': 0})
+    return pas
 
 
-async def downloadindsms(tarnum , skey):
-
+async def downloadindsms(tarnum, skey):
     conp.attack.attacknum.insert_one(
         {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
     os.system("cp indiaa.py indisms.py")
     file = "indisms.py"
     os.system(f"sed -i s/€tor/{tarnum}/g indisms.py")
-    main(file)
+    await setup(file)
+    os.system("rm indisms.py bomber-indisms.py")
     return "ok"
 
 
 async def lookk(ip):
     for i in conn.masbom.login.find():
         no = i['no']
-        for x in range (1 , int(no)):
+        for x in range(1, int(no)):
             ipp = i[f'ip{x}']
             if ip == ipp:
                 return i['key']
