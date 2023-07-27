@@ -170,6 +170,14 @@ async def firstlogin(request: Request , name , keys):
         #     return "ok"
         # else:
         #     return "failed"
-
-
+@app.get("/bomber/access/")
+async def acesskey(acess):
+    uskey = await accessk()
+    print(uskey)
+    adkey = await adminacc()
+    print(adkey)
+    if (uskey==acess or adkey==acess):
+        return "true"
+    else:
+        return "false"
 
