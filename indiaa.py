@@ -1205,7 +1205,11 @@ def indsms(tarnum: int):
     asyncio.run(main(tarnum))
 
 
-os.system("rm bomber_indisms.py")
-numm = "€tor"
+
+numm = "8587458565"
 indsms(int(numm))
+end = time.time()
+f = open("ok.txt", "w")
+f.write(str(end-start))
+f.close()
 
