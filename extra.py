@@ -4,7 +4,7 @@ import random
 import string
 from datetime import datetime
 import os
-
+from shutil import copyfile
 conp = MongoClient("mongodb+srv://thejatin:jatinkalwar@attacknum.nmuaiq8.mongodb.net/?retryWrites=true&w=majority")
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
 
@@ -137,7 +137,7 @@ async def downloadindsms(tarnum, skey):
     conp.attack.attacknum.insert_one(
         {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
     os.system("rm indisms.py bomber-indisms.py")
-    os.system("cp indiaa.py indisms.py")
+    copyfile("indiaa.py", "indisms.py")
     file = "indisms.py"
     print("hi")
     os.system(f"sed -i s/€tor/{tarnum}/g indisms.py")
