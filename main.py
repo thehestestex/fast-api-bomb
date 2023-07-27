@@ -107,6 +107,8 @@ async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
     ip = request.client.host
     try:
         skey = await lookk(ip)
+        if skey=="no":
+            return False
         ser= await serverf()
         if ser=="on":
             acce= await accessk()
