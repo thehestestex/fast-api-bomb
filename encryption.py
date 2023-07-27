@@ -96,7 +96,7 @@ async def setup(filee: str):
     
         curdirectory = os.path.dirname(os.path.abspath(__file__))
     
-        file_to_obfuscate_open = open(curdirectory + "\\" + file_to_obfuscatestr, "r")
+        file_to_obfuscate_open = open(file_to_obfuscatestr, "r")
         a = str(file_to_obfuscate_open.read())
         file_to_obfuscate_open.close()
         prepped = str(a.strip())
