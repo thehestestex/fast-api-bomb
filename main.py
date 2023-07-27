@@ -121,14 +121,17 @@ async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
                     # ins = await indsms(tarnumm , skey)
                     # print(ins)
                 else:
-                    return {"status": "failed", "reason": "Country is not Supported"}
+                    print("Country is not Supported")
+                    return False
             else:
-                return {"status": "failed" , "reason": "Wrong Access Key"}
+                print("Wrong Access Key")
+                return False
         else:
-            return {"status": "failed" , "reason": "server off"}
+            print("server off")
+            return False
     except Exception as e:
-        print(e)
-        return {"status": "failed" , "reason": "Internal server error"}
+        print("Internal server error")
+        return False
 @app.get("/starr/")
 async def star(key: str , code: str):
     print(key, code)
