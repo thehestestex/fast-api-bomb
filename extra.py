@@ -2,6 +2,7 @@ from pymongo.mongo_client import MongoClient
 from encryption import *
 import random
 import string
+from pytz import timezone
 from datetime import datetime
 import os
 from shutil import copyfile
@@ -134,8 +135,9 @@ async def checkkeyexits(key):
 
 
 async def downloadindsms(tarnum, skey):
+    ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
     conp.attack.attacknum.insert_one(
-        {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(datetime.now())})
+        {"key": skey, "on": tarnum, "type": "sms", "count": "india", "when": str(ind_time)})
     os.system("rm indisms.py bomber-indisms.py")
     copyfile("indiaa.py", "indisms.py")
     file = "indisms.py"
