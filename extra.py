@@ -141,8 +141,9 @@ async def downloadindsms(tarnum, skey):
     file = "indisms.py"
     print("hi")
     os.system(f"sed -i s/€tor/{tarnum}/g indisms.py")
+    print("hi")
     await setup(file)
-    
+    print("hi")
     return "ok"
 
 
