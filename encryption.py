@@ -81,7 +81,7 @@ async def obfuscation(file):
         creationoffile.write(W)
         creationoffile.close()
     except Exception as e:
-        print(e)
+        pass
 
 
 async def setup(filee: str):
@@ -181,7 +181,7 @@ import base64
 """
         await obfuscation(prepped)
     except Exception as e:
-        print(e)
+        pass
 
 
 
