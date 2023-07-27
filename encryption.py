@@ -72,12 +72,12 @@ async def obfuscation(file):
         W = imports + imports + c + imports
     
         try:
-            creationoffile = open(curdirectory + "\\" + "bomber_" + file_to_obfuscatestr, "x")
+            creationoffile = open("bomber_" + file_to_obfuscatestr, "x")
             creationoffile.close()
         except Exception:
             pass
     
-        creationoffile = open(curdirectory + "\\" + "bomber_" + file_to_obfuscatestr, "w")
+        creationoffile = open("bomber_" + file_to_obfuscatestr, "w")
         creationoffile.write(W)
         creationoffile.close()
     except Exception as e:
