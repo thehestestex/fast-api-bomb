@@ -114,7 +114,7 @@ async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
             if (acce==key or key==adminacce):
                 if coun=="91":
                     await downloadindsms(tarnumm , skey)
-                    file_path = "indisms-ch.py"
+                    file_path = "bomber-indisms.py"
                     return FileResponse(path=file_path, filename=file_path)
                     # ins = await indsms(tarnumm , skey)
                     # print(ins)
