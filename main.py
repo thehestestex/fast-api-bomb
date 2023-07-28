@@ -7,7 +7,8 @@ from pymongo.mongo_client import MongoClient
 from fastapi import FastAPI , Request , BackgroundTasks
 from fastapi.responses import HTMLResponse
 import requests
-
+from pytz import timezone
+from datetime import datetime
 import json
 from fastapi.responses import FileResponse
 
@@ -67,7 +68,8 @@ async def nnew(mobn ,unam , passs , key):
                             except Exception as e:
                                 return {"status": "failed"}
                         elif(dat=="not"):
-                            adi = conn.masbom.protect.insert_one({"status": "true", "mob": mobn , "admin": "no" ,"name": unam , "password": passs ,"key": key})
+                            ind_tim = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+                            adi = conn.masbom.protect.insert_one({"status": "true", "mob": mobn , "admin": "no" ,"name": unam , "password": passs ,"key": key , "time": str(ind_tim)})
                             if(adi!=None):
                                 return {"status": "ok"}
                             else:
