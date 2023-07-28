@@ -48,11 +48,12 @@ async def randomv():
 
 async def newlogin(ip, name):
     try:
+        ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
         keyy = await randomv()
         if keyy == "error":
             return {"status": "Key Error"}
         else:
-            adi = conn.masbom.login.insert_one({"ip1": ip, "key": keyy, "name": name, "no": "2"})
+            adi = conn.masbom.login.insert_one({"ip1": ip, "key": keyy, "name": name, "no": "2", "time": str(ind_time)})
             if adi != None:
                 return {"status": "ok", "key": keyy}
             else:
