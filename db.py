@@ -17,7 +17,8 @@ async def accessk():
 
 async def adminacc():
     try:
-        return conn.masbom.serverss.find_one({"pos": "adminskey"}, {'bombkey': 1, '_id': 0})
+        se = conn.masbom.serverss.find_one({"pos": "adminskey"}, {'bombkey': 1, '_id': 0})
+        return se['bombkey']
     except Exception as e:
         return {"status: Control Server Error"}
 
