@@ -145,8 +145,7 @@ async def star(key: str , code: str):
 #     return HTMLResponse(content=htmlres , status_code=200)
 
 def read_root( request: Request):
-    file_path="india.py"
-    return FileResponse(path=file_path , filename=file_path)
+    return {"status": "working"}
 @app.get("/loginn/")
 async def loginn(request: Request , keyss):
     ip = request.client.host
