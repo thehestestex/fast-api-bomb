@@ -13,7 +13,7 @@ import json
 from fastapi.responses import FileResponse
 
 
-app = FastAPI()
+app = FastAPI(docs_url=None , redoc_url=None)
 
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
 @app.get("/num/verify/{mobn}")
