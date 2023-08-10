@@ -166,3 +166,43 @@ async def downloadupi(upiid , ukey):
     await setup(ufile)
     return "ok"
 
+async def verifyupi(upiid):
+    try:
+
+        headers = {
+            'authority': 'prod-api.viewlift.com',
+            'accept': 'application/json, text/plain, */*',
+            'accept-language': 'en-US,en;q=0.9',
+            'authorization': 'eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySWQiOiI0Mjg3OTFhMy1iNjU2LTRmMjgtYTk5ZC05YzNjODljNjQyYzciLCJzaXRlIjoiaG9pY2hvaXR2Iiwic2l0ZUlkIjoiN2ZhMGVhOWEtOTc5OS00NDE3LTk5ZjUtY2JiNTM0M2M1NTFkIiwiZW1haWwiOiIrOTE4MDA0MzYwODMyQGhvaWNob2l0di5jb20iLCJpcGFkZHJlc3NlcyI6IjEwMy4xODAuOTQuMTU0LCAxMC4xMjAuMy4wLCA1NC4yMjQuMjA5LjE2LCAxMzAuMTc2Ljk4LjE1OCIsImNvdW50cnlDb2RlIjoiSU4iLCJwb3N0YWxjb2RlIjoiMTEwMDAxIiwicHJvdmlkZXIiOiJ2aWV3bGlmdCIsImRldmljZUlkIjoiYnJvd3Nlci0yODVjNmM4ZC0yYTJjLTkxZDEtMmRlMS1hYjY3Y2Q2ZjJmODUiLCJpZCI6IjQyODc5MWEzLWI2NTYtNGYyOC1hOTlkLTljM2M4OWM2NDJjNyIsInBob25lTnVtYmVyIjoiKzkxODAwNDM2MDgzMiIsInBob25lQ29kZSI6OTEsImxvZ2luVmlhIjoiUEhPTkUiLCJpYXQiOjE2OTEyMTUxNzAsImV4cCI6MTY5MTgxOTk3MH0.oMkBeyTZXbfNAxK5WJmGnJitjOmCRC3gLTGgTvAhFmw',
+            'content-type': 'application/json',
+            'origin': 'https://www.hoichoi.tv',
+            'referer': 'https://www.hoichoi.tv/',
+            'sec-ch-ua': '"Not/A)Brand";v="99", "Google Chrome";v="115", "Chromium";v="115"',
+            'sec-ch-ua-mobile': '?0',
+            'sec-ch-ua-platform': '"Windows"',
+            'sec-fetch-dest': 'empty',
+            'sec-fetch-mode': 'cors',
+            'sec-fetch-site': 'cross-site',
+            'user-agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/115.0.0.0 Safari/537.36',
+            'x-api-key': 'PBSooUe91s7RNRKnXTmQG7z3gwD2aDTA6TlJp6ef',
+        }
+
+        params = {
+            'site': 'hoichoitv',
+        }
+
+        json_data = {
+            'vpa': f'{upiid}',
+            'merchant_id': 'hoichoi',
+        }
+
+        async with aiohttp.ClientSession() as sess:
+            async with sess.post('https://prod-api.viewlift.com/subscription/upi/verify-vpa',params=params,headers=headers,json=json_data) as response:
+                datt = await response.json()
+                return datt['status']
+
+    except Exception as e:
+        print(e)
+        return False
+
+
