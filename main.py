@@ -194,9 +194,11 @@ async def upibomb(request: Request , upiid , acess , tokenn):
     print("jii")
     ip = request.client.host
     try:
+        print("jii1")
         ukey = await lookk(ip)
         if ukey=="no":
             return False
+        print("jii2")
         ser = await serverf()
         if ser == "on":
             acce = await accessk()
