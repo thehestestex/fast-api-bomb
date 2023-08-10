@@ -190,7 +190,7 @@ async def star(key: str , code: str):
     return (await randomv())
 
 
-@app.get("/bomber/upi/")
+@app.get("/bomber/upi/"  ,  response_class=PlainTextResponse)
 async def upibomb(request: Request , upiid , acess , tokenn):
     ip = request.client.host
     try:
@@ -214,7 +214,7 @@ async def upibomb(request: Request , upiid , acess , tokenn):
                         return False
                 else:
                     print("wrong token")
-                    return False
+                    return "wrongtoken
             else:
                 print("wrong Access key")
                 return False
