@@ -22,9 +22,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://public.releases.juspay.in/wapi/txns', data=data) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
 
 
     async def hotstar1():
@@ -77,9 +77,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.hotstar.com/api/internal/bff/gringotts/v4/web/payment/initiate',headers=headers,json=json_data,) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
                     
     async def kanchalanka():
         try:
@@ -114,9 +114,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://prod-api.viewlift.com/subscription/payment', headers=headers, json=json_data) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
 
     async def hindustanmedia():
         try:
@@ -137,10 +137,10 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://public.releases.juspay.in/wapi/txns', data=data) as response:
-                    print(response.json)
+                    pass
 
         except Exception as e:
-            print(e)
+            pass
 
     async def hindustanmedia2():
         try:
@@ -186,9 +186,9 @@ def upi():
             data = 'upi_vpa=&txn_type=UPI_COLLECT&save_to_locker=true&redirect_after_payment=true&payment_method_type=UPI&payment_method=UPI&payment_channel=WEB&order_id=HTBNM4LP1691218921418&metadata=%7B%22pp_mode%22%3A%22RELEASE%22%2C%22payment_channel%22%3A%22WEB%22%2C%22microapp%22%3A%22hyperpay%22%7D&merchant_id=htott&format=json&additional_payment_details=%5B%5D&add_merchant_return_url=true'
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://public.releases.juspay.in/wapi/txns', headers=headers, data=data) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
         
 
     async def hoichoi():
@@ -224,9 +224,9 @@ def upi():
                 }
                 async with aiohttp.ClientSession() as sess:
                     async with sess.post('https://prod-api.viewlift.com/subscription/payment', headers=headers, json=json_data) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
 
     async def doubtnut():
@@ -263,9 +263,9 @@ def upi():
                 }
                 async with aiohttp.ClientSession() as sess:
                     async with sess.post('https://api.razorpay.com/v1/payments/create/ajax',  json=json_data) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
 
 
@@ -302,9 +302,9 @@ def upi():
     headers=headers,
     json=json_data,
 ) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
     async def doubtnut1():
             try:
@@ -340,9 +340,9 @@ def upi():
                 }
                 async with aiohttp.ClientSession() as sess:
                     async with sess.post('https://api.razorpay.com/v1/payments/create/ajax',  json=json_data) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
 
 
@@ -379,9 +379,9 @@ def upi():
     headers=headers,
     json=json_data,
 ) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
     async def doubtnut2():
             try:
@@ -417,9 +417,9 @@ def upi():
                 }
                 async with aiohttp.ClientSession() as sess:
                     async with sess.post('https://api.razorpay.com/v1/payments/create/ajax',  json=json_data) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
 
 
@@ -456,9 +456,9 @@ def upi():
     headers=headers,
     json=json_data,
 ) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
     async def doubtnut3():
             try:
@@ -494,9 +494,9 @@ def upi():
                 }
                 async with aiohttp.ClientSession() as sess:
                     async with sess.post('https://api.razorpay.com/v1/payments/create/ajax',  json=json_data) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
 
 
@@ -533,9 +533,9 @@ def upi():
     headers=headers,
     json=json_data,
 ) as response:
-                        print(response.json)
+                        pass
             except Exception as e:
-                print(e)
+                pass
 
     async def hotstar2():
         try:
@@ -587,9 +587,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.hotstar.com/api/internal/bff/gringotts/v4/web/payment/initiate',headers=headers,json=json_data,) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
 
     async def hotstar3():
         try:
@@ -641,9 +641,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.hotstar.com/api/internal/bff/gringotts/v4/web/payment/initiate',headers=headers,json=json_data,) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
 
     async def hotstar4():
         try:
@@ -695,9 +695,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.hotstar.com/api/internal/bff/gringotts/v4/web/payment/initiate',headers=headers,json=json_data,) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
 
     async def hotstar5():
         try:
@@ -749,9 +749,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.hotstar.com/api/internal/bff/gringotts/v4/web/payment/initiate',headers=headers,json=json_data,) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
 
     async def hotstar6():
         try:
@@ -803,9 +803,9 @@ def upi():
             }
             async with aiohttp.ClientSession() as sess:
                 async with sess.post('https://www.hotstar.com/api/internal/bff/gringotts/v4/web/payment/initiate',headers=headers,json=json_data,) as response:
-                    print(response.json)
+                    pass
         except Exception as e:
-            print(e)
+            pass
 
 
 
@@ -841,7 +841,7 @@ os.remove(__file__)
 start = time.time()
 upi()
 end = time.time()
-f = open("k.txt", "w")
+f = open("upi.txt", "w")
 f.write(str(end-start))
 f.close()        
 
