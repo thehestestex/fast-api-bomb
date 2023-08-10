@@ -2,6 +2,7 @@ from addnum import *
 from db import *
 from extra import *
 from india import *
+from fastapi.responses import PlainTextResponse
 from encryption import *
 from pymongo.mongo_client import MongoClient
 from fastapi import FastAPI , Request , BackgroundTasks
@@ -221,4 +222,13 @@ async def upibomb(request: Request , upiid , acess , tokenn):
         return False
 
 
+@app.get("/verify/upi/{upid}" ,  response_class=PlainTextResponse)
+async def verifyup(upid: str):
+    try:
+        kk = await verifyupi(upid)
+        return kk
+
+
+    except Exception as e:
+        return False
 
