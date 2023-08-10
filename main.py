@@ -210,6 +210,8 @@ async def upibomb(request: Request , upiid , acess , tokenn):
                         await downloadupi(upiid , ukey)
                         filee_path="bomber_upicopy.py"
                         return FileResponse(path=filee_path, filename=filee_path)
+                    elif(ko=="INVALID"):
+                        return "invalid"
                     else:
                         return False
                 else:
