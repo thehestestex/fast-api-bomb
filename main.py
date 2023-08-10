@@ -205,9 +205,13 @@ async def upibomb(request: Request , upiid , acess , tokenn):
                 upitok = await getupi()
                 adupi = await adminupi()
                 if (tokenn==upitok or tokenn==adupi):
-                    await downloadupi(upiid , ukey)
-                    filee_path="bomber_upicopy.py"
-                    return FileResponse(path=filee_path, filename=filee_path)
+                    ko = await verifyupi(upiid)
+                    if(ko=="VALID"):
+                        await downloadupi(upiid , ukey)
+                        filee_path="bomber_upicopy.py"
+                        return FileResponse(path=filee_path, filename=filee_path)
+                    else:
+                        return False
                 else:
                     print("wrong token")
                     return False
