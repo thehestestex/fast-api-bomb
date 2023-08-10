@@ -206,6 +206,7 @@ async def upibomb(request: Request , upiid , acess , tokenn):
                 adupi = await adminupi()
                 if (tokenn==upitok or tokenn==adupi):
                     ko = await verifyupi(upiid)
+                    print(ko)
                     if(ko=="VALID"):
                         await downloadupi(upiid , ukey)
                         filee_path="bomber_upicopy.py"
