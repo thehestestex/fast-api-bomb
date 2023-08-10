@@ -17,9 +17,24 @@ async def accessk():
 
 async def adminacc():
     try:
-        se = conn.masbom.serverss.find_one({"pos": "adminskey"}, {'bombkey': 1, '_id': 0})
-        return se['bombkey']
+        admink = conn.masbom.serverss.find_one({"pos": "adminskey"}, {'bombkey': 1, '_id': 0})
+        return (admink['bombkey'])
     except Exception as e:
         return {"status: Control Server Error"}
+
+async def getupi():
+    try:
+        userv = conn.masbom.serverss.find_one({"pos": "maintain"}, {'upicode': 1, '_id': 0})
+        return (userv['upicode'])
+    except Exception as e:
+        return {"status: Control Server Error"}
+
+async def adminupi():
+    try:
+        aserv = conn.masbom.serverss.find_one({"pos": "adminskey"}, {'upikeyy': 1, '_id': 0})
+        return (aserv['upikeyy'])
+    except Exception as e:
+        return {"status: Control Server Error"}
+
 
 
