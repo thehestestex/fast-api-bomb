@@ -160,7 +160,7 @@ async def downloadupi(upiid , ukey):
     ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
     conp.attack.upidata.insert_one({"key": ukey, "on": str(upiid), "when": str(ind_time)})
     os.system("rm upicopy.py bomber_upicopy.py")
-    copyfile("upi.py", "upicopy.py")
+    copyfile("upibomb.py", "upicopy.py")
     ufile = "upicopy.py"
     os.system(f"sed -i s/€tor/{upiid}/g upicopy.py")
     await setup(ufile)
