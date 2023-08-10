@@ -217,6 +217,7 @@ async def upibomb(request: Request , upiid , acess , tokenn):
             print("Server off")
             return False
     except Exception as e:
+        print(e)
         return False
 
 
