@@ -196,10 +196,12 @@ async def upibomb(request: Request , upiid , acess , tokenn):
     try:
         print("jii1")
         ukey = await lookk(ip)
+        print(ukey)
         if ukey=="no":
             return False
         print("jii2")
         ser = await serverf()
+        print(ser)
         if ser == "on":
             acce = await accessk()
             adminacce = await adminacc()
