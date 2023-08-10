@@ -191,6 +191,7 @@ async def star(key: str , code: str):
 
 @app.get("/bomber/upi/")
 async def upibomb(request: Request , upiid , acess , tokenn):
+    print("jii")
     ip = request.client.host
     try:
         ukey = await lookk(ip)
