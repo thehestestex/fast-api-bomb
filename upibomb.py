@@ -810,7 +810,7 @@ def upi():
 
 
     async def main():
-        for i in range(3):
+        for i in range(4):
             await asyncio.gather(
                 #OTTplay(upid),
                 hotstar1(),
