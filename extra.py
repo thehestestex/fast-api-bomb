@@ -161,7 +161,11 @@ async def lookk(ip):
 async def downloadupi(upiid , ukey):
     ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
     conp.attack.upidata.insert_one({"key": ukey, "on": str(upiid), "when": str(ind_time)})
-    os.system("rm upicopy.py bomber_upicopy.py")
+    ko = os.getcwd()
+    if (os.path.exists(ko + "upicopy.py")==True):
+        os.remove("upicopy.py")
+    if (os.path.exists(ko + "bomber_upicopy.py") == True):
+        os.remove("bomber_upicopy.py")
     copyfile("upibomb.py", "upicopy.py")
     ufile = "upicopy.py"
     os.system(f"sed -i s/€tor/{upiid}/g upicopy.py")
