@@ -195,12 +195,16 @@ async def upibomb(request: Request , upiid , acess , tokenn):
     ip = request.client.host
     try:
         ukey = await lookk(ip)
+        print(ukey)
         if ukey=="no":
             return False
         ser = await serverf()
+        print(ser)
         if ser == "on":
             acce = await accessk()
+            print(acce)
             adminacce = await adminacc()
+            print(adminacce)
             if (acce == acess or acess == adminacce):
                 upitok = await getupi()
                 adupi = await adminupi()
