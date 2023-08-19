@@ -224,13 +224,13 @@ async def upibomb(request: Request , upiid , acess , tokenn):
                     return "wrongtoken"
             else:
                 print("wrong Access key")
-                return False
+                return "false"
         else:
             print("Server off")
-            return False
+            return "false"
     except Exception as e:
         print(e)
-        return False
+        return "false"
 
 
 @app.get("/verify/upi/{upid}" ,  response_class=PlainTextResponse)
