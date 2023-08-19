@@ -197,7 +197,7 @@ async def upibomb(request: Request , upiid , acess , tokenn):
         ukey = await lookk(ip)
         print(ukey)
         if ukey=="no":
-            return False
+            return "false"
         ser = await serverf()
         print(ser)
         if ser == "on":
