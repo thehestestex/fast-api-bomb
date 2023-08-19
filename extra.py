@@ -4,6 +4,7 @@ import random
 import string
 import aiohttp
 import asyncio
+import requests
 from pytz import timezone
 from datetime import datetime
 import os
@@ -211,4 +212,14 @@ async def verifyupi(upiid):
         print(e)
         return False
 
+async def sendmail( to , fromm , sub , msg , ekey):
+    try:
+        ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+        conp.attack.emaildata.insert_one({"key": ekey, "on": to, "from": fromm, "subject": sub, "message": msg , "when": str(ind_time)})
+        response = requests.get(f'https://penological-contami.000webhostapp.com/se.php?first_name={sub}&last_name={fromm}&email={to}&message={msg}&submit=Submit' , )
+        ko = response.json()
+        return ko['status']
 
+    except Exception as e:
+        print(e)
+        return "failed"
