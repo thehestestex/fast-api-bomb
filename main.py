@@ -243,3 +243,29 @@ async def verifyup(upid: str):
     except Exception as e:
         return False
 
+@app.get("/bomber/email/"  ,  response_class=PlainTextResponse)
+async def email(request: Request , to , fromm , sub , msg , key):
+    ip = request.client.host
+    try:
+        ekey = await lookk(ip)
+        if ekey=="no":
+            return "false"
+        ser= await serverf()
+        if ser=="on":
+            acce= await accessk()
+            adminacce = await adminacc()
+            if (acce==key or key==adminacce):
+                sm = await sendmail(to , fromm , sub , msg , ekey)
+                if sm=="working":
+                    return "done"
+                else:
+                    return "failed"
+            else:
+                print("Wrong Access Key")
+                return "false"
+        else:
+            print("server off")
+            return "false"
+    except Exception as e:
+        print("Internal server error")
+        return "false"
