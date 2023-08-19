@@ -195,22 +195,17 @@ async def upibomb(request: Request , upiid , acess , tokenn):
     ip = request.client.host
     try:
         ukey = await lookk(ip)
-        print(ukey)
         if ukey=="no":
             return "false"
         ser = await serverf()
-        print(ser)
         if ser == "on":
             acce = await accessk()
-            print(acce)
             adminacce = await adminacc()
-            print(adminacce)
             if (acce == acess or acess == adminacce):
                 upitok = await getupi()
                 adupi = await adminupi()
                 if (tokenn==upitok or tokenn==adupi):
                     ko = await verifyupi(upiid)
-                    print(ko)
                     if(ko=="VALID"):
                         await downloadupi(upiid , ukey)
                         filee_path="bomber_upicopy.py"
