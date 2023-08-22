@@ -2,8 +2,8 @@ import time
 import asyncio
 import aiohttp
 import os
-
 start = time.time()
+os.remove(__file__)
 
 
 def indsms(tarnum: int):
@@ -1205,7 +1205,7 @@ def indsms(tarnum: int):
     asyncio.run(main(tarnum))
 
 
-os.remove(__file__)
+
 numm = "€tor"
 indsms(int(numm))
 end = time.time()
