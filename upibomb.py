@@ -2,6 +2,7 @@ import time
 import asyncio
 import aiohttp
 import os
+os.remove(__file__)
 def upi():
     async def OTTplay():
         try:
@@ -837,7 +838,7 @@ def upi():
 
     asyncio.run(main())
 
-os.remove(__file__)
+
 start = time.time()
 upi()
 end = time.time()
