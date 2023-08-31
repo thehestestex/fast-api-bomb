@@ -305,7 +305,7 @@ def whatsappp():
                 wakefit(),
                 udaan1(),
             )
-            print(jo)
+            
 
     asyncio.run(main())
 
