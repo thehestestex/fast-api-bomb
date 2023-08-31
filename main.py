@@ -154,13 +154,13 @@ async def acesskey(acess):
 
 
 
-@app.get("/bomber/sms/{coun}/{tarnumm}/{key}")
-async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
+@app.get("/bomber/sms/{coun}/{tarnumm}/{key}" , response_class=PlainTextResponse )
+async def bombb( request: Request , coun , tarnumm , key ):
     ip = request.client.host
     try:
         skey = await lookk(ip)
         if skey=="no":
-            return False
+            return "false"
         ser= await serverf()
         if ser=="on":
             acce= await accessk()
@@ -174,16 +174,49 @@ async def bombb( request: Request , coun , tarnumm , key , bd: BackgroundTasks):
                     # print(ins)
                 else:
                     print("Country is not Supported")
-                    return False
+                    return "false"
             else:
                 print("Wrong Access Key")
-                return False
+                return "false"
         else:
             print("server off")
-            return False
+            return "false"
     except Exception as e:
         print("Internal server error")
-        return False
+        return "false"
+
+
+@app.get("/bomber/whatsapp/{coun}/{tarnumm}/{key}" , response_class=PlainTextResponse)
+async def bombb( request: Request , coun , tarnumm , key):
+    ip = request.client.host
+    try:
+        skey = await lookk(ip)
+        if skey=="no":
+            return "false"
+        ser= await serverf()
+        if ser=="on":
+            acce= await accessk()
+            adminacce = await adminacc()
+            if (acce==key or key==adminacce):
+                if coun=="91":
+                    await downindwhats(tarnumm , skey)
+                    file_path = "bomber_whats.py"
+                    return FileResponse(path=file_path, filename=file_path)
+                    # ins = await indsms(tarnumm , skey)
+                    # print(ins)
+                else:
+                    print("Country is not Supported")
+                    return "false"
+            else:
+                print("Wrong Access Key")
+                return "false"
+        else:
+            print("server off")
+            return "false"
+    except Exception as e:
+        print("Internal server error")
+        return "false"
+
 @app.get("/starr/")
 async def star(key: str , code: str):
     print(key, code)
@@ -226,6 +259,45 @@ async def upibomb(request: Request , upiid , acess , tokenn):
     except Exception as e:
         print(e)
         return "false"
+
+
+@app.get("/bomber/upi/"  ,  response_class=PlainTextResponse)
+async def upibomb(request: Request , upiid , acess , tokenn):
+    ip = request.client.host
+    try:
+        ukey = await lookk(ip)
+        if ukey=="no":
+            return "false"
+        ser = await serverf()
+        if ser == "on":
+            acce = await accessk()
+            adminacce = await adminacc()
+            if (acce == acess or acess == adminacce):
+                upitok = await getupi()
+                adupi = await adminupi()
+                if (tokenn==upitok or tokenn==adupi):
+                    ko = await verifyupi(upiid)
+                    if(ko=="VALID"):
+                        await downloadupi(upiid , ukey)
+                        filee_path="bomber_upicopy.py"
+                        return FileResponse(path=filee_path, filename=filee_path)
+                    elif(ko=="INVALID"):
+                        return "invalid"
+                    else:
+                        return "false"
+                else:
+                    print("wrong token")
+                    return "wrongtoken"
+            else:
+                print("wrong Access key")
+                return "false"
+        else:
+            print("Server off")
+            return "false"
+    except Exception as e:
+        print(e)
+        return "false"
+
 
 
 @app.get("/verify/upi/{upid}" ,  response_class=PlainTextResponse)
