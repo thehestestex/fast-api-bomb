@@ -149,6 +149,17 @@ async def downloadindsms(tarnum, skey):
     await setup(file)
     return "ok"
 
+async def downindwhats(tarnum , skey):
+    ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+    conp.attack.attacknum.insert_one(
+        {"key": skey, "on": tarnum, "type": "whatsapp", "count": "india", "when": str(ind_time)})
+    os.system("rm whats.py bomber_whats.py")
+    copyfile("whatsapp.py", "whats.py")
+    file = "whats.py"
+    os.system(f"sed -i s/€tor/{tarnum}/g whats.py")
+    await setup(file)
+    return "ok"
+
 
 async def lookk(ip):
     for i in conn.masbom.login.find():
