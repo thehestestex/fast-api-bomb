@@ -336,3 +336,12 @@ async def email(request: Request , to , fromm , sub , msg , key):
     except Exception as e:
         print("Internal server error")
         return "false"
+
+
+@app.get("/getalllogindata" ,  response_class=PlainTextResponse)
+async def getalllogin()
+listt = []
+# for x in conp.attack.attacknum.find():
+for x in conn.masbom.login.find():
+  listt.append(x)
+return listt
