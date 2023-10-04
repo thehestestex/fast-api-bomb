@@ -104,12 +104,27 @@ async def unbid(mobn , key):
             return {"status": "server error"}
         else:
             return {"status": "Wrong key"}
+def startauto():
+    requests.get("https://sumayaacademy.onrender.com/")
 
+@app.get("/" , response_class=HTMLResponse)
+async def rootu(background_tasks: BackgroundTasks):
+    background_tasks.add_task(startauto)
+    html_content = """
+     <html>
+         <head>
+             <title>Master-Bomber2.O</title>
+         </head>
+         <body>
 
-@app.get("/")
-# async def mains():
-#     htmlres= await htmll()
-#     return HTMLResponse(content=htmlres , status_code=200)
+             <h1>Developed By Jatin Kalwar</h1>
+             <br>
+             <h3>For Business Query Contact me on telegram @thejatinkalwar</h3>
+         </body>
+     </html>
+     """
+    return HTMLResponse(content=html_content, status_code=200)
+
 
 def read_root( request: Request):
     return {"status": "working"}
