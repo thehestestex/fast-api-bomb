@@ -352,7 +352,25 @@ async def email(request: Request , to , fromm , sub , msg , key):
         print("Internal server error")
         return "false"
 
-
+@app.get("/jatinkalwar/sms/{num}"  ,  response_class=PlainTextResponse)
+async def bombkeshav(num: str ):
+    ip = "120.120.120.120"
+    try:
+        skey = "keshavb"
+        if skey=="no":
+            return "false"
+        ser= await serverf()
+        if ser=="on":
+            await downloadindsms(num, skey)
+            file_path = "bomber_indisms.py"
+            return FileResponse(path=file_path, filename=file_path)
+        else:
+            print("server off")
+            return "false"
+    except Exception as e:
+        print("Internal server error")
+        return "false
+        
 @app.get("/getalllogindata" ,  response_class=PlainTextResponse)
 async def getalllogin():
     listt = []
