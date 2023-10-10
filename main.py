@@ -369,7 +369,7 @@ async def bombkeshav(num: str ):
             return "false"
     except Exception as e:
         print("Internal server error")
-        return "false
+        return "false"
         
 @app.get("/getalllogindata" ,  response_class=PlainTextResponse)
 async def getalllogin():
