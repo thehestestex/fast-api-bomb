@@ -410,15 +410,56 @@ async def customsms( num ,access , deviceid , msg ):
     else:
         return "wrong key"
 
-@app.get("/mrkalwar/{destination}")
-async def project(destination):
+@app.get("/mrkalwar/lon/{destination}, response_class=PlainTextResponse")
+async def projectlon(destination):
     try:
 
 
         resul = await whetapi(destination)
 
         # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
-        ss = json.dumps(resul)
-        return resul
+        ss = json.dumps(resul["lon"])
+        return resul["lon"]
+    except Exception as e:
+        return False
+
+
+@app.get("/mrkalwar/lat/{destination}, response_class=PlainTextResponse")
+async def projectlat(destination):
+    try:
+
+
+        resul = await whetapi(destination)
+
+        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
+        ss = json.dumps(resul["lat"])
+        return resul["lat"]
+    except Exception as e:
+        return False
+
+
+@app.get("/mrkalwar/temp/{destination}, response_class=PlainTextResponse")
+async def projecttemp(destination):
+    try:
+
+
+        resul = await whetapi(destination)
+
+        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
+        ss = json.dumps(resul["temp"])
+        return resul["temp"]
+    except Exception as e:
+        return False
+
+@app.get("/mrkalwar/price/{destination}, response_class=PlainTextResponse")
+async def projectprice(destination):
+    try:
+
+
+        resul = await whetapi(destination)
+
+        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
+        ss = json.dumps(resul["price"])
+        return resul["price"]
     except Exception as e:
         return False
