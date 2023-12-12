@@ -1,6 +1,8 @@
 from addnum import *
 from db import *
 from extra import *
+import random
+import json
 from india import *
 from fastapi.responses import PlainTextResponse
 from encryption import *
@@ -408,3 +410,15 @@ async def customsms( num ,access , deviceid , msg ):
     else:
         return "wrong key"
 
+@app.get("/mrkalwar/{destination}")
+async def project(destination):
+    try:
+
+
+        resul = await whetapi(destination)
+
+        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
+        ss = json.dumps(resul)
+        return resul
+    except Exception as e:
+        return False
