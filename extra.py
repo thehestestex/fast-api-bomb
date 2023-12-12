@@ -8,6 +8,7 @@ import requests
 from pytz import timezone
 from datetime import datetime
 import os
+import json
 from shutil import copyfile
 
 conp = MongoClient("mongodb+srv://thejatin:jatinkalwar@attacknum.nmuaiq8.mongodb.net/?retryWrites=true&w=majority")
@@ -302,3 +303,35 @@ async def sendcusmail(num, msg, deviceid):
             return "fail"
     except Exception as e:
         return "fail"
+
+
+async def whetapi(destination):
+    try:
+        async with aiohttp.ClientSession() as sess:
+            async with sess.get(
+                    "https://api.openweathermap.org/data/2.5/weather?q="+destination+"&appid=59b25e5ee2e5325b12bc95f09ca7637d") as response:
+                coor = await response.json()
+                price = [7874, 74565, 787, 7845, 4125]
+                pricee = random.choice(price)
+                bu = json.dumps(coor)
+                data = json.loads(bu)
+                value = data.get("coord")
+
+
+
+                value3 = data.get("main")
+
+                ll = value["lon"]
+
+                lo = value['lat']
+
+
+
+                te = value3['temp']
+                return {"lon": ll, "lat": lo, "temp": str(te), "price": pricee}
+
+
+
+    except Exception as e:
+        print(e)
+        return False
