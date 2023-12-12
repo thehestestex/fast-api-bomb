@@ -410,7 +410,7 @@ async def customsms( num ,access , deviceid , msg ):
     else:
         return "wrong key"
 
-@app.get("/mrkalwar/lon/{destination}, response_class=PlainTextResponse")
+@app.get("/mrkalwar/lon/{destination}", response_class=PlainTextResponse)
 async def projectlon(destination):
     try:
 
@@ -424,7 +424,7 @@ async def projectlon(destination):
         return False
 
 
-@app.get("/mrkalwar/lat/{destination}, response_class=PlainTextResponse")
+@app.get("/mrkalwar/lat/{destination}", response_class=PlainTextResponse)
 async def projectlat(destination):
     try:
 
@@ -438,7 +438,7 @@ async def projectlat(destination):
         return False
 
 
-@app.get("/mrkalwar/temp/{destination}, response_class=PlainTextResponse")
+@app.get("/mrkalwar/temp/{destination}", response_class=PlainTextResponse)
 async def projecttemp(destination):
     try:
 
@@ -451,7 +451,7 @@ async def projecttemp(destination):
     except Exception as e:
         return False
 
-@app.get("/mrkalwar/price/{destination}, response_class=PlainTextResponse")
+@app.get("/mrkalwar/price/{destination}", response_class=PlainTextResponse)
 async def projectprice(destination):
     try:
 
