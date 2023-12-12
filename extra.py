@@ -328,7 +328,7 @@ async def whetapi(destination):
 
 
                 te = value3['temp']
-                return {"lon": ll, "lat": lo, "temp": str(te), "price": pricee}
+                return {"lon": str(ll), "lat":str(lo), "temp": str(te), "price": str(pricee)}
 
 
 
