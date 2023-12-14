@@ -460,7 +460,7 @@ async def projectprice(destination):
 
         # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
         ss = json.dumps(resul["price"])
-        return resul["price"]
+        return str(resul["price"])
     except Exception as e:
         return False
 
