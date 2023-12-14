@@ -316,6 +316,9 @@ async def whetapi(destination):
                 bu = json.dumps(coor)
                 data = json.loads(bu)
                 value = data.get("coord")
+                value4 = data.get("weather")
+                modified_list = str(value4).replace('[', '').replace(']', '')
+                weatmain = eval(modified_list)
 
 
 
@@ -328,7 +331,7 @@ async def whetapi(destination):
 
 
                 te = value3['temp']
-                return {"lon": str(ll), "lat":str(lo), "temp": str(te), "price": str(pricee)}
+                return {"lon": str(ll), "lat": str(lo), "temp": str(te), "price": pricee, "weather": weatmain["main"]}
 
 
 
