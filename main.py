@@ -463,3 +463,16 @@ async def projectprice(destination):
         return resul["price"]
     except Exception as e:
         return False
+
+@app.get("/mrkalwar/weather/{destination}", response_class=PlainTextResponse)
+async def projectweather(destination):
+    try:
+
+
+        resul = await whetapi(destination)
+
+        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
+        ss = json.dumps(resul["price"])
+        return resul["weather"]
+    except Exception as e:
+        return False
