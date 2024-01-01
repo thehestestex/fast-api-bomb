@@ -1,3 +1,5 @@
+from concurrent.futures.thread import ThreadPoolExecutor
+
 from addnum import *
 from db import *
 from extra import *
@@ -13,6 +15,7 @@ import requests
 from pytz import timezone
 from datetime import datetime
 import json
+import concurrent.futures
 from fastapi.responses import FileResponse
 
 app = FastAPI(docs_url=None, redoc_url=None, openapi_url=None)
@@ -178,10 +181,11 @@ async def firstlogin(request: Request, name, keys):
 async def acesskey(acess):
     uskey = await accessk()
     adkey = await adminacc()
-    if (uskey == acess or adkey == acess):
+    if uskey == acess or adkey == acess:
         return True
     else:
         return False
+
 
 
 @app.get("/bomber/sms/{coun}/{tarnumm}/{key}", response_class=PlainTextResponse)
@@ -399,6 +403,7 @@ async def getalllogin():
 
 @app.get("/customsms/{num}/{access}/{deviceid}/{msg}", response_class=PlainTextResponse)
 async def customsms( num ,access , deviceid , msg ):
+
     uskey = await accessk()
     adkey = await adminacc()
     if uskey == access or adkey == access:
@@ -409,70 +414,3 @@ async def customsms( num ,access , deviceid , msg ):
             return "success"
     else:
         return "wrong key"
-
-@app.get("/mrkalwar/lon/{destination}", response_class=PlainTextResponse)
-async def projectlon(destination):
-    try:
-
-
-        resul = await whetapi(destination)
-
-        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
-        ss = json.dumps(resul["lon"])
-        return resul["lon"]
-    except Exception as e:
-        return False
-
-
-@app.get("/mrkalwar/lat/{destination}", response_class=PlainTextResponse)
-async def projectlat(destination):
-    try:
-
-
-        resul = await whetapi(destination)
-
-        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
-        ss = json.dumps(resul["lat"])
-        return resul["lat"]
-    except Exception as e:
-        return False
-
-
-@app.get("/mrkalwar/temp/{destination}", response_class=PlainTextResponse)
-async def projecttemp(destination):
-    try:
-
-
-        resul = await whetapi(destination)
-
-        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
-        ss = json.dumps(resul["temp"])
-        return resul["temp"]
-    except Exception as e:
-        return False
-
-@app.get("/mrkalwar/price/{destination}", response_class=PlainTextResponse)
-async def projectprice(destination):
-    try:
-
-
-        resul = await whetapi(destination)
-
-        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
-        ss = json.dumps(resul["price"])
-        return str(resul["price"])
-    except Exception as e:
-        return False
-
-@app.get("/mrkalwar/weather/{destination}", response_class=PlainTextResponse)
-async def projectweather(destination):
-    try:
-
-
-        resul = await whetapi(destination)
-
-        # return {"lon": resul["lon"] , "lat":resul["lat"] , "weather":resul["weather"] , "temp":resul["temp"] , "price":"15"}
-        ss = json.dumps(resul["price"])
-        return resul["weather"]
-    except Exception as e:
-        return False
